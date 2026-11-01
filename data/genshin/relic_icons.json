@@ -1,0 +1,254 @@
+{
+  "10001": {
+    "set_id": "sojourner",
+    "name_ja": "旅人の心"
+  },
+  "10002": {
+    "set_id": "brave",
+    "name_ja": "勇士の心"
+  },
+  "10003": {
+    "set_id": "defender",
+    "name_ja": "守護の心"
+  },
+  "10004": {
+    "set_id": "tiny_miracle",
+    "name_ja": "奇跡"
+  },
+  "10005": {
+    "set_id": "berserker",
+    "name_ja": "狂戦士"
+  },
+  "10006": {
+    "set_id": "martial",
+    "name_ja": "武人"
+  },
+  "10007": {
+    "set_id": "instructor",
+    "name_ja": "教官"
+  },
+  "10008": {
+    "set_id": "gambler",
+    "name_ja": "博徒"
+  },
+  "10009": {
+    "set_id": "exile",
+    "name_ja": "亡命者"
+  },
+  "10010": {
+    "set_id": "adventurer",
+    "name_ja": "冒険者"
+  },
+  "10011": {
+    "set_id": "lucky_dog",
+    "name_ja": "幸運"
+  },
+  "10012": {
+    "set_id": "scholar",
+    "name_ja": "学者"
+  },
+  "10013": {
+    "set_id": "traveling_doctor",
+    "name_ja": "医者"
+  },
+  "14001": {
+    "set_id": "blizzard",
+    "name_ja": "氷風を彷徨う勇士"
+  },
+  "14002": {
+    "set_id": "thundersoother",
+    "name_ja": "雷を鎮める尊者"
+  },
+  "14003": {
+    "set_id": "lavawalker",
+    "name_ja": "烈火を渡る賢者"
+  },
+  "14004": {
+    "set_id": "maiden",
+    "name_ja": "愛される少女"
+  },
+  "15001": {
+    "set_id": "gladiator",
+    "name_ja": "剣闘士のフィナーレ"
+  },
+  "15002": {
+    "set_id": "viridescent",
+    "name_ja": "翠緑の影"
+  },
+  "15003": {
+    "set_id": "wanderer",
+    "name_ja": "大地を流浪する楽団"
+  },
+  "15005": {
+    "set_id": "thundering",
+    "name_ja": "雷のような怒り"
+  },
+  "15006": {
+    "set_id": "crimson",
+    "name_ja": "燃え盛る炎の魔女"
+  },
+  "15007": {
+    "set_id": "noblesse",
+    "name_ja": "旧貴族のしつけ"
+  },
+  "15008": {
+    "set_id": "bloodstained",
+    "name_ja": "血染めの騎士道"
+  },
+  "15009": {
+    "set_id": "prayers_for_illumination",
+    "name_ja": "火祭りの人"
+  },
+  "15010": {
+    "set_id": "prayers_for_destiny",
+    "name_ja": "水祭りの人"
+  },
+  "15011": {
+    "set_id": "prayers_for_wisdom",
+    "name_ja": "雷祭りの人"
+  },
+  "15013": {
+    "set_id": "prayers_to_springtime",
+    "name_ja": "氷祭りの人"
+  },
+  "15014": {
+    "set_id": "archaic",
+    "name_ja": "悠久の磐岩"
+  },
+  "15015": {
+    "set_id": "retracing",
+    "name_ja": "逆飛びの流星"
+  },
+  "15016": {
+    "set_id": "heart_of_depth",
+    "name_ja": "沈淪の心"
+  },
+  "15017": {
+    "set_id": "tenacity",
+    "name_ja": "千岩牢固"
+  },
+  "15018": {
+    "set_id": "pale_flame",
+    "name_ja": "蒼白の炎"
+  },
+  "15019": {
+    "set_id": "shimenawa",
+    "name_ja": "追憶のしめ縄"
+  },
+  "15020": {
+    "set_id": "emblem",
+    "name_ja": "絶縁の旗印"
+  },
+  "15021": {
+    "set_id": "husk",
+    "name_ja": "華館夢醒形骸記"
+  },
+  "15022": {
+    "set_id": "ocean_hued",
+    "name_ja": "海染硨磲"
+  },
+  "15023": {
+    "set_id": "vermillion",
+    "name_ja": "辰砂往生録"
+  },
+  "15024": {
+    "set_id": "echoes",
+    "name_ja": "来歆の余響"
+  },
+  "15025": {
+    "set_id": "deepwood",
+    "name_ja": "深林の記憶"
+  },
+  "15026": {
+    "set_id": "gilded",
+    "name_ja": "金メッキの夢"
+  },
+  "15027": {
+    "set_id": "desert",
+    "name_ja": "砂上の楼閣の史話"
+  },
+  "15028": {
+    "set_id": "paradise",
+    "name_ja": "楽園の絶花"
+  },
+  "15029": {
+    "set_id": "nymph",
+    "name_ja": "水仙の夢"
+  },
+  "15030": {
+    "set_id": "vourukasha",
+    "name_ja": "花海甘露の光"
+  },
+  "15031": {
+    "set_id": "marechaussee",
+    "name_ja": "ファントムハンター"
+  },
+  "15032": {
+    "set_id": "golden_troupe",
+    "name_ja": "黄金の劇団"
+  },
+  "15033": {
+    "set_id": "song_past",
+    "name_ja": "在りし日の歌"
+  },
+  "15034": {
+    "set_id": "nighttime",
+    "name_ja": "残響の森で囁かれる夜話"
+  },
+  "15035": {
+    "set_id": "fragment_of_harmonic_whimsy",
+    "name_ja": "諧律奇想の断章"
+  },
+  "15036": {
+    "set_id": "reverie",
+    "name_ja": "遂げられなかった想い"
+  },
+  "15037": {
+    "set_id": "scroll_of_the_hero_of_cinder_city",
+    "name_ja": "灰燼の都に立つ英雄の絵巻"
+  },
+  "15038": {
+    "set_id": "obsidian",
+    "name_ja": "黒曜の秘典"
+  },
+  "15039": {
+    "set_id": "long_night",
+    "name_ja": "長き夜の誓い"
+  },
+  "15040": {
+    "set_id": "deep_galleries",
+    "name_ja": "深廊の終曲"
+  },
+  "15041": {
+    "set_id": "sky_unveiling",
+    "name_ja": "天穹の顕現せし夜"
+  },
+  "15042": {
+    "set_id": "silken_moon",
+    "name_ja": "月を紡ぐ夜の歌"
+  },
+  "15043": {
+    "set_id": "dawnstar",
+    "name_ja": "暁の星と月の歌"
+  },
+  "15044": {
+    "set_id": "rising_winds",
+    "name_ja": "風立ちの日"
+  },
+  "15045": {
+    "set_id": "celestial_gift",
+    "name_ja": "天からの贈り物"
+  },
+  "15046": {
+    "set_id": "disenchantment_in_deep_shadow",
+    "name_ja": "影に沈む幻"
+  },
+  "15047": {
+    "set_id": "crimson_oath",
+    "name_ja": "紅血の証"
+  },
+  "15048": {
+    "set_id": "furnace_heart",
+    "name_ja": "炉炎溶錬の心"
+  }
+}

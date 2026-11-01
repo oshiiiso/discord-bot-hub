@@ -1,0 +1,5743 @@
+[
+  {
+    "id": "ifa",
+    "name_ja": "イファ",
+    "aliases": [
+      "Ifa"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000113"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "venti",
+    "name_ja": "ウェンティ",
+    "aliases": [
+      "Venti"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000022"
+    ],
+    "builds": [
+      {
+        "id": "em",
+        "name_ja": "熟知",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "viridescent",
+          "gilded",
+          "instructor"
+        ],
+        "sets_ok": [
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "em",
+          "anemo"
+        ],
+        "main_circlet": [
+          "em",
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jean",
+    "name_ja": "ジン",
+    "aliases": [
+      "Jean"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000003"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sucrose",
+    "name_ja": "スクロース",
+    "aliases": [
+      "Sucrose"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000043"
+    ],
+    "builds": [
+      {
+        "id": "em",
+        "name_ja": "熟知",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "viridescent",
+          "gilded",
+          "instructor"
+        ],
+        "sets_ok": [
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "em",
+          "anemo"
+        ],
+        "main_circlet": [
+          "em",
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chasca",
+    "name_ja": "チャスカ",
+    "aliases": [
+      "Chasca"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000104"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "obsidian"
+        ],
+        "sets_ok": [
+          "viridescent",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "varka",
+    "name_ja": "ファルカ",
+    "aliases": [
+      "ヴァルカ",
+      "Varka"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000128"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "viridescent",
+          "obsidian"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "faruzan",
+    "name_ja": "ファルザン",
+    "aliases": [
+      "Faruzan"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000076"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prune",
+    "name_ja": "プルーネ",
+    "aliases": [
+      "Prune"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000132"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jahoda",
+    "name_ja": "ヤフォダ",
+    "aliases": [
+      "Jahoda"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000124"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lynette",
+    "name_ja": "リネット",
+    "aliases": [
+      "Lynette"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000083"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vesna",
+    "name_ja": "ヴェスナ",
+    "aliases": [
+      "ベスナ",
+      "Vesna"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000143"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson_oath"
+        ],
+        "sets_ok": [
+          "rising_winds",
+          "viridescent",
+          "furnace_heart"
+        ],
+        "main_sands": [
+          "atk_pct",
+          "em"
+        ],
+        "main_goblet": [
+          "atk_pct",
+          "anemo"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mizuki",
+    "name_ja": "夢見月瑞希",
+    "aliases": [
+      "瑞希",
+      "夢見月",
+      "Yumemizuki Mizuki"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000109"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wanderer",
+    "name_ja": "放浪者",
+    "aliases": [
+      "スカラ",
+      "放浪者",
+      "Wanderer"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000075"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traveler_anemo",
+    "name_ja": "旅人（風）",
+    "aliases": [
+      "旅人",
+      "蛍",
+      "空"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000005-504",
+      "10000007-704"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sayu",
+    "name_ja": "早柚",
+    "aliases": [
+      "Sayu"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000053"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kazuha",
+    "name_ja": "楓原万葉",
+    "aliases": [
+      "万葉",
+      "かずは",
+      "Kaedehara Kazuha"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000047"
+    ],
+    "builds": [
+      {
+        "id": "em",
+        "name_ja": "熟知",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "viridescent",
+          "gilded",
+          "instructor"
+        ],
+        "sets_ok": [
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "em",
+          "anemo"
+        ],
+        "main_circlet": [
+          "em",
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lanyan",
+    "name_ja": "藍硯",
+    "aliases": [
+      "ランヤン",
+      "Lan Yan"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000108"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xianyun",
+    "name_ja": "閑雲",
+    "aliases": [
+      "Xianyun"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000093"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xiao",
+    "name_ja": "魈",
+    "aliases": [
+      "Xiao"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000026"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "heizou",
+    "name_ja": "鹿野院平蔵",
+    "aliases": [
+      "Shikanoin Heizou"
+    ],
+    "element": "anemo",
+    "enka_keys": [
+      "10000059"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "viridescent",
+          "rising_winds",
+          "crimson_oath",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "anemo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "aloy",
+    "name_ja": "アーロイ",
+    "aliases": [
+      "Aloy"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000062"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "eula",
+    "name_ja": "エウルア",
+    "aliases": [
+      "Eula"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000051"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "escoffier",
+    "name_ja": "エスコフィエ",
+    "aliases": [
+      "Escoffier"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000112"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "odette",
+    "name_ja": "オデット",
+    "aliases": [
+      "Odette"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000150"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "furnace_heart",
+          "crimson_oath"
+        ],
+        "sets_ok": [
+          "blizzard",
+          "noblesse"
+        ],
+        "main_sands": [
+          "atk_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaeya",
+    "name_ja": "ガイア",
+    "aliases": [
+      "Kaeya"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000015"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sandrone",
+    "name_ja": "サンドローネ",
+    "aliases": [
+      "マリオネット",
+      "傀儡",
+      "Sandrone"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000133"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "furnace_heart"
+        ],
+        "sets_ok": [
+          "blizzard",
+          "golden_troupe"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "citlali",
+    "name_ja": "シトラリ",
+    "aliases": [
+      "Citlali"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000107"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "charlotte",
+    "name_ja": "シャルロット",
+    "aliases": [
+      "Charlotte"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000088"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "skirk",
+    "name_ja": "スカーク",
+    "aliases": [
+      "Skirk"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000114"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deep_galleries"
+        ],
+        "sets_ok": [
+          "blizzard",
+          "marechaussee"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diona",
+    "name_ja": "ディオナ",
+    "aliases": [
+      "Diona"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000039"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "freminet",
+    "name_ja": "フレミネ",
+    "aliases": [
+      "Freminet"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000085"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mika",
+    "name_ja": "ミカ",
+    "aliases": [
+      "Mika"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000080"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wriothesley",
+    "name_ja": "リオセスリ",
+    "aliases": [
+      "Wriothesley"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000086"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "layla",
+    "name_ja": "レイラ",
+    "aliases": [
+      "Layla"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000074"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rosaria",
+    "name_ja": "ロサリア",
+    "aliases": [
+      "Rosaria"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000045"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lohen",
+    "name_ja": "ローエン",
+    "aliases": [
+      "Lohen"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000129"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "qiqi",
+    "name_ja": "七七",
+    "aliases": [
+      "Qiqi"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000035"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traveler_cryo",
+    "name_ja": "旅人（氷）",
+    "aliases": [
+      "旅人",
+      "蛍",
+      "空"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000005-505",
+      "10000007-705"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "furnace_heart",
+          "blizzard",
+          "crimson_oath"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ganyu",
+    "name_ja": "甘雨",
+    "aliases": [
+      "Ganyu"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000037"
+    ],
+    "builds": [
+      {
+        "id": "freeze",
+        "name_ja": "凍結",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      },
+      {
+        "id": "melt",
+        "name_ja": "溶解",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "wanderer",
+          "shimenawa",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "blizzard",
+          "gladiator"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shenhe",
+    "name_ja": "申鶴",
+    "aliases": [
+      "Shenhe"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000063"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ayaka",
+    "name_ja": "神里綾華",
+    "aliases": [
+      "綾華",
+      "あやか",
+      "Kamisato Ayaka"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000002"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chongyun",
+    "name_ja": "重雲",
+    "aliases": [
+      "Chongyun"
+    ],
+    "element": "cryo",
+    "enka_keys": [
+      "10000036"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "blizzard",
+          "deep_galleries",
+          "furnace_heart",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "cryo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alhaitham",
+    "name_ja": "アルハイゼン",
+    "aliases": [
+      "Alhaitham"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000078"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded",
+          "sky_unveiling",
+          "paradise"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "emilie",
+    "name_ja": "エミリエ",
+    "aliases": [
+      "Emilie"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000099"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded",
+          "sky_unveiling",
+          "paradise"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaveh",
+    "name_ja": "カーヴェ",
+    "aliases": [
+      "Kaveh"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000081"
+    ],
+    "builds": [
+      {
+        "id": "em",
+        "name_ja": "熟知",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "viridescent",
+          "gilded",
+          "instructor"
+        ],
+        "sets_ok": [
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "em",
+          "dendro"
+        ],
+        "main_circlet": [
+          "em",
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kinich",
+    "name_ja": "キィニチ",
+    "aliases": [
+      "Kinich"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000101"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded",
+          "sky_unveiling",
+          "paradise"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collei",
+    "name_ja": "コレイ",
+    "aliases": [
+      "Collei"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000067"
+    ],
+    "builds": [
+      {
+        "id": "em",
+        "name_ja": "熟知",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "viridescent",
+          "gilded",
+          "instructor"
+        ],
+        "sets_ok": [
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "em",
+          "dendro"
+        ],
+        "main_circlet": [
+          "em",
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tighnari",
+    "name_ja": "ティナリ",
+    "aliases": [
+      "Tighnari"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000069"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded",
+          "sky_unveiling",
+          "paradise"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nahida",
+    "name_ja": "ナヒーダ",
+    "aliases": [
+      "ナヒダ",
+      "草神",
+      "Nahida"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000073"
+    ],
+    "builds": [
+      {
+        "id": "off",
+        "name_ja": "オフフィールド",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "deepwood"
+        ],
+        "sets_ok": [
+          "gilded",
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "er"
+        ],
+        "main_goblet": [
+          "em",
+          "dendro"
+        ],
+        "main_circlet": [
+          "em",
+          "crit_rate",
+          "crit_dmg"
+        ]
+      },
+      {
+        "id": "on",
+        "name_ja": "オンフィールド",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded"
+        ],
+        "sets_ok": [
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "em"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "em"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nefer",
+    "name_ja": "ネフェル",
+    "aliases": [
+      "Nefer"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000122"
+    ],
+    "builds": [
+      {
+        "id": "em",
+        "name_ja": "熟知",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "sky_unveiling",
+          "gilded"
+        ],
+        "sets_ok": [
+          "deepwood",
+          "wanderer"
+        ],
+        "main_sands": [
+          "em",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "em"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "em"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yaoyao",
+    "name_ja": "ヨォーヨ",
+    "aliases": [
+      "Yaoyao"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000077"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded",
+          "sky_unveiling",
+          "paradise"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lauma",
+    "name_ja": "ラウマ",
+    "aliases": [
+      "Lauma"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000119"
+    ],
+    "builds": [
+      {
+        "id": "em",
+        "name_ja": "熟知",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "em": 0.25
+        },
+        "sets_preferred": [
+          "deepwood",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gilded",
+          "silken_moon"
+        ],
+        "main_sands": [
+          "em",
+          "er"
+        ],
+        "main_goblet": [
+          "em",
+          "dendro"
+        ],
+        "main_circlet": [
+          "em",
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traveler_dendro",
+    "name_ja": "旅人（草）",
+    "aliases": [
+      "旅人",
+      "蛍",
+      "空"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000005-508",
+      "10000007-708"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "baizhu",
+    "name_ja": "白朮",
+    "aliases": [
+      "Baizhu"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000082"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded",
+          "sky_unveiling",
+          "paradise"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kirara",
+    "name_ja": "綺良々",
+    "aliases": [
+      "Kirara"
+    ],
+    "element": "dendro",
+    "enka_keys": [
+      "10000061"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "deepwood",
+          "gilded",
+          "sky_unveiling",
+          "paradise"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "dendro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alyosha",
+    "name_ja": "アリョーシャ",
+    "aliases": [
+      "Alyosha"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000148"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "iansan",
+    "name_ja": "イアンサ",
+    "aliases": [
+      "Iansan"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000110"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ineffa",
+    "name_ja": "イネファ",
+    "aliases": [
+      "Ineffa"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000116"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ororon",
+    "name_ja": "オロルン",
+    "aliases": [
+      "Ororon"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000105"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "clorinde",
+    "name_ja": "クロリンデ",
+    "aliases": [
+      "Clorinde"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000098"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sethos",
+    "name_ja": "セトス",
+    "aliases": [
+      "Sethos"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000097"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cyno",
+    "name_ja": "セノ",
+    "aliases": [
+      "Cyno"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000071"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dori",
+    "name_ja": "ドリー",
+    "aliases": [
+      "Dori"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000068"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fischl",
+    "name_ja": "フィッシュル",
+    "aliases": [
+      "Fischl"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000031"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flins",
+    "name_ja": "フリンズ",
+    "aliases": [
+      "Flins"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000120"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "sky_unveiling"
+        ],
+        "sets_ok": [
+          "thundering",
+          "gilded"
+        ],
+        "main_sands": [
+          "atk_pct",
+          "em"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lisa",
+    "name_ja": "リサ",
+    "aliases": [
+      "Lisa"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000006"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "razor",
+    "name_ja": "レザー",
+    "aliases": [
+      "Razor"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000020"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "varesa",
+    "name_ja": "ヴァレサ",
+    "aliases": [
+      "Varesa"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000111"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "long_night",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "marechaussee",
+          "gladiator"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kuki",
+    "name_ja": "久岐忍",
+    "aliases": [
+      "忍",
+      "くき",
+      "Kuki Shinobu"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000065"
+    ],
+    "builds": [
+      {
+        "id": "hyperbloom",
+        "name_ja": "超開花",
+        "weights": {
+          "em": 0.25,
+          "er": 1.0,
+          "hp_pct": 0.5
+        },
+        "sets_preferred": [
+          "paradise",
+          "gilded"
+        ],
+        "sets_ok": [
+          "thundering",
+          "instructor"
+        ],
+        "main_sands": [
+          "em"
+        ],
+        "main_goblet": [
+          "em"
+        ],
+        "main_circlet": [
+          "em"
+        ]
+      },
+      {
+        "id": "heal",
+        "name_ja": "治療",
+        "weights": {
+          "em": 0.25,
+          "hp_pct": 1.0,
+          "er": 1.0
+        },
+        "sets_preferred": [
+          "tenacity",
+          "vourukasha"
+        ],
+        "sets_ok": [
+          "maiden",
+          "ocean_hued"
+        ],
+        "main_sands": [
+          "em",
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "em",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "healing",
+          "em",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sara",
+    "name_ja": "九条裟羅",
+    "aliases": [
+      "Kujou Sara"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000056"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yae_miko",
+    "name_ja": "八重神子",
+    "aliases": [
+      "神子",
+      "八重",
+      "Yae Miko"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000058"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "keqing",
+    "name_ja": "刻晴",
+    "aliases": [
+      "Keqing"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000042"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beidou",
+    "name_ja": "北斗",
+    "aliases": [
+      "Beidou"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000024"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "thundering",
+          "emblem",
+          "sky_unveiling",
+          "obsidian"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traveler_electro",
+    "name_ja": "旅人（雷）",
+    "aliases": [
+      "旅人",
+      "蛍",
+      "空"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000005-507",
+      "10000007-707"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "thundering"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "raiden",
+    "name_ja": "雷電将軍",
+    "aliases": [
+      "雷電",
+      "将軍",
+      "雷電将軍",
+      "らいでん",
+      "Raiden Shogun"
+    ],
+    "element": "electro",
+    "enka_keys": [
+      "10000052"
+    ],
+    "builds": [
+      {
+        "id": "burst",
+        "name_ja": "爆発",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem"
+        ],
+        "sets_ok": [
+          "thundering"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "electro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      },
+      {
+        "id": "hyperbloom",
+        "name_ja": "超開花",
+        "weights": {
+          "em": 0.25,
+          "er": 1.0,
+          "hp_pct": 0.5
+        },
+        "sets_preferred": [
+          "paradise",
+          "gilded"
+        ],
+        "sets_ok": [
+          "thundering",
+          "instructor"
+        ],
+        "main_sands": [
+          "em",
+          "er"
+        ],
+        "main_goblet": [
+          "em"
+        ],
+        "main_circlet": [
+          "em"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "albedo",
+    "name_ja": "アルベド",
+    "aliases": [
+      "Albedo"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000038"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "illuga",
+    "name_ja": "イルーガ",
+    "aliases": [
+      "Illuga"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000127"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "cinder",
+          "nighttime",
+          "golden_troupe"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "geo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kachina",
+    "name_ja": "カチーナ",
+    "aliases": [
+      "Kachina"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000100"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gorou",
+    "name_ja": "ゴロー",
+    "aliases": [
+      "Gorou"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000055"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xilonen",
+    "name_ja": "シロネン",
+    "aliases": [
+      "Xilonen"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000103"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "navia",
+    "name_ja": "ナヴィア",
+    "aliases": [
+      "Navia"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000091"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "cinder",
+          "nighttime",
+          "golden_troupe"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "geo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "noelle",
+    "name_ja": "ノエル",
+    "aliases": [
+      "Noelle"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000034"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "linnea",
+    "name_ja": "リンネア",
+    "aliases": [
+      "Linnea"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000130"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "cinder",
+          "nighttime",
+          "golden_troupe"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "geo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zibai",
+    "name_ja": "兹白",
+    "aliases": [
+      "茲白",
+      "Zibai"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000126"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ningguang",
+    "name_ja": "凝光",
+    "aliases": [
+      "Ningguang"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000027"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "cinder",
+          "nighttime",
+          "golden_troupe"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "geo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chiori",
+    "name_ja": "千織",
+    "aliases": [
+      "Chiori"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000094"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traveler_geo",
+    "name_ja": "旅人（岩）",
+    "aliases": [
+      "旅人",
+      "蛍",
+      "空"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000005-506",
+      "10000007-706"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "geo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itto",
+    "name_ja": "荒瀧一斗",
+    "aliases": [
+      "一斗",
+      "荒瀧",
+      "Arataki Itto"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000057"
+    ],
+    "builds": [
+      {
+        "id": "def",
+        "name_ja": "防御",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "def_pct": 1.0
+        },
+        "sets_preferred": [
+          "husk",
+          "archaic",
+          "cinder"
+        ],
+        "sets_ok": [
+          "noblesse",
+          "gladiator"
+        ],
+        "main_sands": [
+          "def_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "def_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "def_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zhongli",
+    "name_ja": "鍾離",
+    "aliases": [
+      "しょうり",
+      "鍾離",
+      "Zhongli"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000030"
+    ],
+    "builds": [
+      {
+        "id": "shield",
+        "name_ja": "シールド",
+        "weights": {
+          "hp_pct": 1.0,
+          "er": 1.0
+        },
+        "sets_preferred": [
+          "tenacity"
+        ],
+        "sets_ok": [
+          "archaic",
+          "noblesse"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hp_pct",
+          "geo"
+        ],
+        "main_circlet": [
+          "hp_pct"
+        ]
+      },
+      {
+        "id": "burst",
+        "name_ja": "爆発",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "tenacity",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "archaic"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "geo",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yunjin",
+    "name_ja": "雲菫",
+    "aliases": [
+      "Yun Jin"
+    ],
+    "element": "geo",
+    "enka_keys": [
+      "10000064"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "husk",
+          "cinder",
+          "nighttime",
+          "golden_troupe"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "geo",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "aino",
+    "name_ja": "アイノ",
+    "aliases": [
+      "Aino"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000121"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "hydro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "candace",
+    "name_ja": "キャンディス",
+    "aliases": [
+      "Candace"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000072"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "columbina",
+    "name_ja": "コロンビーナ",
+    "aliases": [
+      "コロンビナ",
+      "ダムセレット",
+      "Columbina"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000125"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "dawnstar",
+          "silken_moon",
+          "sky_unveiling"
+        ],
+        "sets_ok": [
+          "tenacity",
+          "heart_of_depth"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er",
+          "em"
+        ],
+        "main_goblet": [
+          "hp_pct",
+          "hydro"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sigewinne",
+    "name_ja": "シグウィン",
+    "aliases": [
+      "Sigewinne"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000095"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tartaglia",
+    "name_ja": "タルタリヤ",
+    "aliases": [
+      "公子",
+      "タルタリヤ",
+      "チャイルド",
+      "Tartaglia"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000033"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "hydro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dahlia",
+    "name_ja": "ダリア",
+    "aliases": [
+      "Dahlia"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000115"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "hydro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nilou",
+    "name_ja": "ニィロウ",
+    "aliases": [
+      "Nilou"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000070"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neuvillette",
+    "name_ja": "ヌヴィレット",
+    "aliases": [
+      "ヌビレット",
+      "ヌヴィ",
+      "Neuvillette"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000087"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "barbara",
+    "name_ja": "バーバラ",
+    "aliases": [
+      "Barbara"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000014"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "furina",
+    "name_ja": "フリーナ",
+    "aliases": [
+      "水神",
+      "フリーナ",
+      "Furina"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000089"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mualani",
+    "name_ja": "ムアラニ",
+    "aliases": [
+      "Mualani"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000102"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "obsidian"
+        ],
+        "sets_ok": [
+          "heart_of_depth",
+          "marechaussee"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mona",
+    "name_ja": "モナ",
+    "aliases": [
+      "Mona"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000041"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "hydro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vodyanitsa",
+    "name_ja": "ヴォジャニーツァ",
+    "aliases": [
+      "ヴォジャニツァ",
+      "Vodya",
+      "Vodyanitsa"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000140"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "hp_pct": 1.0,
+          "er": 1.0
+        },
+        "sets_preferred": [
+          "tenacity"
+        ],
+        "sets_ok": [
+          "maiden",
+          "ocean_hued",
+          "noblesse"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hp_pct",
+          "hydro"
+        ],
+        "main_circlet": [
+          "hp_pct",
+          "healing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yelan",
+    "name_ja": "夜蘭",
+    "aliases": [
+      "Yelan"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000060"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traveler_hydro",
+    "name_ja": "旅人（水）",
+    "aliases": [
+      "旅人",
+      "蛍",
+      "空"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000005-503",
+      "10000007-703"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "nymph",
+          "heart_of_depth"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "hydro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kokomi",
+    "name_ja": "珊瑚宮心海",
+    "aliases": [
+      "心海",
+      "ココミ",
+      "Sangonomiya Kokomi"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000054"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hydro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ayato",
+    "name_ja": "神里綾人",
+    "aliases": [
+      "綾人",
+      "あやと",
+      "Kamisato Ayato"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000066"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "hydro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xingqiu",
+    "name_ja": "行秋",
+    "aliases": [
+      "Xingqiu"
+    ],
+    "element": "hydro",
+    "enka_keys": [
+      "10000025"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "heart_of_depth",
+          "nymph",
+          "marechaussee",
+          "dawnstar"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "hydro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arlecchino",
+    "name_ja": "アルレッキーノ",
+    "aliases": [
+      "アルレ",
+      "召使",
+      "Arlecchino"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000096"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "amber",
+    "name_ja": "アンバー",
+    "aliases": [
+      "Amber"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000021"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "klee",
+    "name_ja": "クレー",
+    "aliases": [
+      "Klee"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000029"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chevreuse",
+    "name_ja": "シュヴルーズ",
+    "aliases": [
+      "Chevreuse"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000090"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dehya",
+    "name_ja": "ディシア",
+    "aliases": [
+      "Dehya"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000079"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "vourukasha",
+          "marechaussee"
+        ],
+        "sets_ok": [
+          "tenacity"
+        ],
+        "main_sands": [
+          "atk_pct",
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      },
+      {
+        "id": "tank",
+        "name_ja": "耐久",
+        "weights": {
+          "hp_pct": 1.0,
+          "er": 1.0,
+          "atk_pct": 0.5
+        },
+        "sets_preferred": [
+          "tenacity",
+          "vourukasha"
+        ],
+        "sets_ok": [
+          "noblesse"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "hp_pct",
+          "pyro"
+        ],
+        "main_circlet": [
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diluc",
+    "name_ja": "ディルック",
+    "aliases": [
+      "Diluc"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000016"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "thoma",
+    "name_ja": "トーマ",
+    "aliases": [
+      "Thoma"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000050"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "durin",
+    "name_ja": "ドゥリン",
+    "aliases": [
+      "Durin"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000123"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "rising_winds",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "crimson",
+          "emblem"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nicole",
+    "name_ja": "ニコ",
+    "aliases": [
+      "ニコ・リヤン",
+      "Nicole"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000131"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bennett",
+    "name_ja": "ベネット",
+    "aliases": [
+      "Bennett"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000032"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "er": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "noblesse"
+        ],
+        "sets_ok": [
+          "emblem",
+          "instructor"
+        ],
+        "main_sands": [
+          "er",
+          "hp_pct"
+        ],
+        "main_goblet": [
+          "hp_pct",
+          "pyro"
+        ],
+        "main_circlet": [
+          "healing",
+          "hp_pct"
+        ]
+      },
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "crimson"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mavuika",
+    "name_ja": "マーヴィカ",
+    "aliases": [
+      "火神",
+      "マーヴィカ",
+      "Mavuika"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000106"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lyney",
+    "name_ja": "リネ",
+    "aliases": [
+      "Lyney"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000084"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gaming",
+    "name_ja": "嘉明",
+    "aliases": [
+      "Gaming"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000092"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yoimiya",
+    "name_ja": "宵宮",
+    "aliases": [
+      "Yoimiya"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000049"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traveler_pyro",
+    "name_ja": "旅人（炎）",
+    "aliases": [
+      "旅人",
+      "蛍",
+      "空"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000005-502",
+      "10000007-702"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "obsidian",
+          "cinder",
+          "crimson"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yanfei",
+    "name_ja": "煙緋",
+    "aliases": [
+      "Yanfei"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000048"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hutao",
+    "name_ja": "胡桃",
+    "aliases": [
+      "ふーたお",
+      "HuTao",
+      "胡桃",
+      "Hu Tao"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000046"
+    ],
+    "builds": [
+      {
+        "id": "hp",
+        "name_ja": "HP火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "hp_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "tenacity"
+        ],
+        "main_sands": [
+          "hp_pct",
+          "er"
+        ],
+        "main_goblet": [
+          "pyro",
+          "hp_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "hp_pct"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xinyan",
+    "name_ja": "辛炎",
+    "aliases": [
+      "Xinyan"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000044"
+    ],
+    "builds": [
+      {
+        "id": "dps",
+        "name_ja": "火力",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "sets_ok": [
+          "gladiator",
+          "wanderer"
+        ],
+        "main_sands": [
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xiangling",
+    "name_ja": "香菱",
+    "aliases": [
+      "Xiangling"
+    ],
+    "element": "pyro",
+    "enka_keys": [
+      "10000023"
+    ],
+    "builds": [
+      {
+        "id": "support",
+        "name_ja": "サポート",
+        "weights": {
+          "crit_rate": 2.0,
+          "crit_dmg": 1.0,
+          "er": 1.0,
+          "atk_pct": 1.0
+        },
+        "sets_preferred": [
+          "emblem",
+          "noblesse"
+        ],
+        "sets_ok": [
+          "crimson",
+          "shimenawa",
+          "obsidian",
+          "rising_winds"
+        ],
+        "main_sands": [
+          "er",
+          "atk_pct"
+        ],
+        "main_goblet": [
+          "pyro",
+          "atk_pct"
+        ],
+        "main_circlet": [
+          "crit_rate",
+          "crit_dmg",
+          "er"
+        ]
+      }
+    ]
+  }
+]

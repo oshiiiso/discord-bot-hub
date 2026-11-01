@@ -1,0 +1,89 @@
+{
+  "characters": [],
+  "sets": [
+    {
+      "id": "tiny_miracle",
+      "name_ja": "奇跡",
+      "aliases": [
+        "Tiny Miracle"
+      ]
+    },
+    {
+      "id": "adventurer",
+      "name_ja": "冒険者",
+      "aliases": [
+        "Adventurer"
+      ]
+    },
+    {
+      "id": "lucky_dog",
+      "name_ja": "幸運",
+      "aliases": [
+        "Lucky Dog"
+      ]
+    },
+    {
+      "id": "traveling_doctor",
+      "name_ja": "医者",
+      "aliases": [
+        "Traveling Doctor"
+      ]
+    },
+    {
+      "id": "prayers_for_illumination",
+      "name_ja": "火祭りの人",
+      "aliases": [
+        "Prayers for Illumination"
+      ]
+    },
+    {
+      "id": "prayers_for_destiny",
+      "name_ja": "水祭りの人",
+      "aliases": [
+        "Prayers for Destiny"
+      ]
+    },
+    {
+      "id": "prayers_for_wisdom",
+      "name_ja": "雷祭りの人",
+      "aliases": [
+        "Prayers for Wisdom"
+      ]
+    },
+    {
+      "id": "prayers_to_springtime",
+      "name_ja": "氷祭りの人",
+      "aliases": [
+        "Prayers to Springtime"
+      ]
+    },
+    {
+      "id": "fragment_of_harmonic_whimsy",
+      "name_ja": "諧律奇想の断章",
+      "aliases": [
+        "Fragment of Harmonic Whimsy"
+      ]
+    },
+    {
+      "id": "scroll_of_the_hero_of_cinder_city",
+      "name_ja": "灰燼の都に立つ英雄の絵巻",
+      "aliases": [
+        "Scroll of the Hero of Cinder City"
+      ]
+    },
+    {
+      "id": "celestial_gift",
+      "name_ja": "天からの贈り物",
+      "aliases": [
+        "Celestial Gift"
+      ]
+    },
+    {
+      "id": "disenchantment_in_deep_shadow",
+      "name_ja": "影に沈む幻",
+      "aliases": [
+        "Disenchantment in Deep Shadow"
+      ]
+    }
+  ]
+}

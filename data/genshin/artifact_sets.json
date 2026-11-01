@@ -1,0 +1,378 @@
+[
+  {
+    "id": "gladiator",
+    "name_ja": "剣闘士のフィナーレ",
+    "aliases": [
+      "剣闘士",
+      "グラジ"
+    ]
+  },
+  {
+    "id": "wanderer",
+    "name_ja": "大地を流浪する楽団",
+    "aliases": [
+      "楽団",
+      "流浪"
+    ]
+  },
+  {
+    "id": "noblesse",
+    "name_ja": "旧貴族のしつけ",
+    "aliases": [
+      "旧貴族",
+      "貴族"
+    ]
+  },
+  {
+    "id": "maiden",
+    "name_ja": "愛される少女",
+    "aliases": [
+      "少女"
+    ]
+  },
+  {
+    "id": "viridescent",
+    "name_ja": "翠緑の影",
+    "aliases": [
+      "翠緑",
+      "VV"
+    ]
+  },
+  {
+    "id": "archaic",
+    "name_ja": "悠久の磐岩",
+    "aliases": [
+      "磐岩"
+    ]
+  },
+  {
+    "id": "retracing",
+    "name_ja": "逆飛びの流星",
+    "aliases": [
+      "逆飛び",
+      "流星"
+    ]
+  },
+  {
+    "id": "crimson",
+    "name_ja": "燃え盛る炎の魔女",
+    "aliases": [
+      "炎魔女",
+      "魔女"
+    ]
+  },
+  {
+    "id": "lavawalker",
+    "name_ja": "烈火を渡る賢者",
+    "aliases": [
+      "烈火"
+    ]
+  },
+  {
+    "id": "thundering",
+    "name_ja": "雷のような怒り",
+    "aliases": [
+      "如雷"
+    ]
+  },
+  {
+    "id": "thundersoother",
+    "name_ja": "雷を鎮める尊者",
+    "aliases": [
+      "平雷"
+    ]
+  },
+  {
+    "id": "blizzard",
+    "name_ja": "氷風を彷徨う勇士",
+    "aliases": [
+      "氷風"
+    ]
+  },
+  {
+    "id": "heart_of_depth",
+    "name_ja": "沈淪の心",
+    "aliases": [
+      "沈淪"
+    ]
+  },
+  {
+    "id": "tenacity",
+    "name_ja": "千岩牢固",
+    "aliases": [
+      "千岩"
+    ]
+  },
+  {
+    "id": "pale_flame",
+    "name_ja": "蒼白の炎",
+    "aliases": [
+      "蒼白"
+    ]
+  },
+  {
+    "id": "bloodstained",
+    "name_ja": "血染めの騎士道",
+    "aliases": [
+      "血染め"
+    ]
+  },
+  {
+    "id": "shimenawa",
+    "name_ja": "追憶のしめ縄",
+    "aliases": [
+      "追憶",
+      "しめ縄"
+    ]
+  },
+  {
+    "id": "emblem",
+    "name_ja": "絶縁の旗印",
+    "aliases": [
+      "絶縁"
+    ]
+  },
+  {
+    "id": "husk",
+    "name_ja": "華館夢醒形骸記",
+    "aliases": [
+      "華館"
+    ]
+  },
+  {
+    "id": "ocean_hued",
+    "name_ja": "海染硨磲",
+    "aliases": [
+      "海染"
+    ]
+  },
+  {
+    "id": "vermillion",
+    "name_ja": "辰砂往生録",
+    "aliases": [
+      "辰砂"
+    ]
+  },
+  {
+    "id": "echoes",
+    "name_ja": "来歆の余響",
+    "aliases": [
+      "来歆",
+      "余響"
+    ]
+  },
+  {
+    "id": "deepwood",
+    "name_ja": "深林の記憶",
+    "aliases": [
+      "深林"
+    ]
+  },
+  {
+    "id": "gilded",
+    "name_ja": "金メッキの夢",
+    "aliases": [
+      "金メッキ"
+    ]
+  },
+  {
+    "id": "desert",
+    "name_ja": "砂上の楼閣の史話",
+    "aliases": [
+      "楼閣"
+    ]
+  },
+  {
+    "id": "paradise",
+    "name_ja": "楽園の絶花",
+    "aliases": [
+      "楽園"
+    ]
+  },
+  {
+    "id": "vourukasha",
+    "name_ja": "花海甘露の光",
+    "aliases": [
+      "花海"
+    ]
+  },
+  {
+    "id": "nymph",
+    "name_ja": "水仙の夢",
+    "aliases": [
+      "水仙"
+    ]
+  },
+  {
+    "id": "marechaussee",
+    "name_ja": "ファントムハンター",
+    "aliases": [
+      "ファントム",
+      "狩人"
+    ]
+  },
+  {
+    "id": "golden_troupe",
+    "name_ja": "黄金の劇団",
+    "aliases": [
+      "黄金劇団",
+      "劇団"
+    ]
+  },
+  {
+    "id": "song_past",
+    "name_ja": "在りし日の歌",
+    "aliases": [
+      "在りし日"
+    ]
+  },
+  {
+    "id": "whimsy",
+    "name_ja": "諧律奇想の夜想曲",
+    "aliases": [
+      "諧律",
+      "夜想曲"
+    ]
+  },
+  {
+    "id": "reverie",
+    "name_ja": "遂げられなかった想い",
+    "aliases": [
+      "想い"
+    ]
+  },
+  {
+    "id": "obsidian",
+    "name_ja": "黒曜の秘典",
+    "aliases": [
+      "黒曜",
+      "黒曜の魔像"
+    ]
+  },
+  {
+    "id": "cinder",
+    "name_ja": "灰燼の都に立つ英雄",
+    "aliases": [
+      "灰燼",
+      "巻物"
+    ]
+  },
+  {
+    "id": "nighttime",
+    "name_ja": "残響の森で囁かれる夜話",
+    "aliases": [
+      "夜話",
+      "残響"
+    ]
+  },
+  {
+    "id": "deep_galleries",
+    "name_ja": "深廊の終曲",
+    "aliases": [
+      "深廊"
+    ]
+  },
+  {
+    "id": "long_night",
+    "name_ja": "長き夜の誓い",
+    "aliases": [
+      "長夜",
+      "長夜の誓い"
+    ]
+  },
+  {
+    "id": "silken_moon",
+    "name_ja": "月を紡ぐ夜の歌",
+    "aliases": [
+      "月歌",
+      "絹月",
+      "紡ぐ夜"
+    ]
+  },
+  {
+    "id": "sky_unveiling",
+    "name_ja": "天穹の顕現せし夜",
+    "aliases": [
+      "天穹"
+    ]
+  },
+  {
+    "id": "dawnstar",
+    "name_ja": "暁の星と月の歌",
+    "aliases": [
+      "暁月",
+      "暁の星"
+    ]
+  },
+  {
+    "id": "rising_winds",
+    "name_ja": "風立ちの日",
+    "aliases": [
+      "風立ち"
+    ]
+  },
+  {
+    "id": "crimson_oath",
+    "name_ja": "紅血の証",
+    "aliases": [
+      "紅血"
+    ]
+  },
+  {
+    "id": "furnace_heart",
+    "name_ja": "炉炎溶錬の心",
+    "aliases": [
+      "炉炎",
+      "溶錬"
+    ]
+  },
+  {
+    "id": "instructor",
+    "name_ja": "教官",
+    "aliases": []
+  },
+  {
+    "id": "exile",
+    "name_ja": "亡命者",
+    "aliases": []
+  },
+  {
+    "id": "berserker",
+    "name_ja": "狂戦士",
+    "aliases": []
+  },
+  {
+    "id": "gambler",
+    "name_ja": "博徒",
+    "aliases": []
+  },
+  {
+    "id": "scholar",
+    "name_ja": "学者",
+    "aliases": []
+  },
+  {
+    "id": "brave",
+    "name_ja": "勇士の心",
+    "aliases": [
+      "勇士"
+    ]
+  },
+  {
+    "id": "defender",
+    "name_ja": "守護の心",
+    "aliases": [
+      "守護"
+    ]
+  },
+  {
+    "id": "sojourner",
+    "name_ja": "旅人の心",
+    "aliases": []
+  },
+  {
+    "id": "martial",
+    "name_ja": "武人",
+    "aliases": []
+  }
+]

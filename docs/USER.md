@@ -1,0 +1,162 @@
+# おしーそBot 使い方
+
+交換コードの通知、原神のビルドカード、募集用のボイスチャンネルを1つの Bot で動かします。
+
+> **個人・身内利用向け**  
+> 信頼できるサーバーでのみ運用してください。ソースの使い方は基本的に自由です。
+
+プログラムの起動やデータの置き場は [README.md](../README.md) を見てください。
+
+Discord 上の名前は **おしーそBot** です。Developer Portal の Bot ユーザー名も同じにしてください。サーバーに入ったあと、ニックネームも自動で合わせます。
+
+TikTok 配信通知と Among Us の自動ミュート（AU-MuteBot）はこの Bot には入っていません。
+
+---
+
+## セットアップ
+
+### 1. Discord Bot の準備
+
+1. [Discord Developer Portal](https://discord.com/developers/applications) で Bot を作成する（既存の FanCode か BuildCard のアプリを流用してもよい）
+2. Bot ユーザー名を `おしーそBot` にする
+3. Privileged Gateway Intents で **Server Members Intent は不要**。**Presence は不要**。**Voice State Intent をオン**（募集 VC のため）
+4. OAuth2 URL Generator で `bot` と `applications.commands` を選ぶ
+5. 権限の例:
+   - メッセージを見る / 送る / 管理、埋め込みリンク、メッセージ履歴を読む、ファイルを添付
+   - チャンネルの管理、メンバーを移動、招待を作成、ボイスチャンネルに接続
+6. サーバーに招待する
+
+**同じトークンで古い FanCode / BuildCard を同時起動しないでください。** どちらかが切断されます。hub に切り替えたら古いプロセスは止める。
+
+### 2. 環境構築
+
+```powershell
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+copy .env.example .env
+```
+
+`.env` を編集（最低限）:
+
+- `DISCORD_BOT_TOKEN` … Bot トークン
+- `GUILD_ID` … サーバー ID（推奨。スラッシュがすぐ出る）
+- 使う機能のチャンネル ID（下の表）。募集 VC は `VC_PANEL_CHANNEL_ID` `VC_RECRUIT_CHANNEL_ID` `VC_CREATE_CATEGORY_ID` を入れる
+
+### 3. 起動
+
+```powershell
+python main.py
+```
+
+---
+
+## チャンネルの例
+
+```
+コード通知
+├ 原神コード          ← GENSHIN_CHANNEL_ID
+├ スタレコード        ← STARRAIL_CHANNEL_ID
+├ ゼンゼロコード      ← ZZZ_CHANNEL_ID
+└ 鳴潮コード          ← WUTHERING_CHANNEL_ID
+
+ビルドカード          ← BUILDCARD_CHANNEL_ID（スレッド不可）
+
+募集
+├ 部屋を作成          ← VC_PANEL_CHANNEL_ID（テキスト。`/vc panel`）
+├ 募集ボード          ← VC_RECRUIT_CHANNEL_ID（テキスト）
+└ 自由作成 VC         ← VC_CREATE_CATEGORY_ID（カテゴリ。一時 VC を置く）
+```
+
+原神のコード通知とビルドカードは **別チャンネル** を推奨します。同じ ID を入れると、コード一覧とカードが混ざります。
+
+---
+
+## コマンド
+
+旧 Bot の `/check` などは、機能ごとのグループに移しました。`/ping` もグループの中です。そのグループが候補に出れば、その機能は載っています。
+
+### 交換コード（`/fancode`）
+
+| コマンド | 説明 | 権限 |
+|---|---|---|
+| `/fancode check` | 全ゲームのコードチェックを即時実行 | メッセージの管理 |
+| `/fancode clear` | 指定ゲーム（または全ゲーム）のメッセージ・保存データを削除 | メッセージの管理 |
+| `/fancode status` | 各ゲームの最終確認・次回チェック・件数 | 誰でも |
+| `/fancode codes` | 指定ゲームの有効コード一覧 | 誰でも |
+| `/fancode history` | 指定ゲームの追加・削除履歴 | 誰でも |
+| `/fancode ping` | 応答速度 | 誰でも |
+
+起動後、各コードチャンネルに有効コード一覧の固定メッセージが投稿・更新されます。新規コードは別メッセージで知らせ、3日後に消えます。
+
+### ビルドカード（`/buildcard`）
+
+**誰でも（ビルドカード用チャンネル）**
+
+| コマンド | できること |
+|---|---|
+| `/buildcard uid` | ボタンの代わりに UID からカードを出す |
+| `/buildcard formula` | 点数の見方 |
+| `/buildcard ping` | 応答確認 |
+
+**メッセージの管理がある人**
+
+| コマンド | できること |
+|---|---|
+| `/buildcard setup` | 案内をピン留めする |
+| `/buildcard reload` | 新しいパッチのあと、キャラの名前と立ち絵を取り直す |
+| `/buildcard check` | 覚えている全キャラの立ち絵名・ビルドが足りるか見る |
+| `/buildcard preview` | 表にあるキャラのカード見本 |
+| `/buildcard previewall` | 表にある全員のカード見本をスレッドに出す。数分かかる |
+| `/buildcard addchar` | キャラの点数の出し方・名前を覚える |
+| `/buildcard addset` | 聖遺物セットを定番判定できるようにする |
+
+カードの出し方:
+
+1. ゲームのプロフィールで **キャラクター紹介を公開** する
+2. 「カードを出す」を押して UID を入れる
+3. 出したいキャラを選んで「このキャラで出す」（自分にだけ見える。所持全員ではなく、紹介に出しているキャラだけ）
+4. チャンネルにはカード画像だけ出る
+
+操作できるのは UID を入れた人だけ。対象チャンネルで `/buildcard setup` を一度実行する。
+
+### 募集 VC（`/vc`）
+
+| コマンド | 説明 | 権限 |
+|---|---|---|
+| `/vc panel` | 部屋作成パネルをピン留めする | メッセージの管理 |
+| `/vc ping` | 応答速度 | 誰でも |
+
+1. 部屋を作成チャンネルで `/vc panel` を一度実行する
+2. パネルの「部屋を作る」を押して種類を選ぶ。部屋名・何時まで・詳細・入室人数（最大 15）は任意。先にボイスへ入っておくとできた部屋へ移る
+3. 自由作成 VC カテゴリに `{種類}-{部屋名}-{何時まで}` の部屋ができる（空の段は付けない。同名があれば末尾に `-1` から足す）
+4. 募集チャンネルに埋め込みと「参加する」が出る。何時までを入れていれば埋め込みにも出る。ボイスに入っていた人は部屋へ移る
+5. 一度誰かが入ったあと 0 人になり、数秒（既定 10 秒）経つと VC と埋め込みを消す。誰も入らない部屋は数分（既定 5 分）で消す
+
+人数を空にすると 15。同一ユーザーの連続作成は 30 秒空ける。Bot は人数に数えない。作った VC は公開のまま（AU-MuteBot からも見える）。
+
+Among Us の自動ミュートをするなら、その部屋に入ってから AU-MuteBot の `/new` を使う。ゲーム中に全員が抜けると部屋が消えるので、終わるまでは1人残す。
+
+---
+
+## 古い Bot からの移行
+
+- **トークン**は1本にする。流用したアプリの表示名を `おしーそBot` に変える
+- 交換コードの固定メッセージ ID は新しい Bot では使えない。初回チェックで新しい一覧が投稿される
+- ビルドカードの `data/genshin/extras.json` はコピーしてよい（`/addchar` `/addset` の追加分）
+- 旧コマンド名（`/check` など）は出なくなる。上のグループを使う
+- ビルドカードの案内ピンは `/buildcard setup` で取り直す
+
+---
+
+## うまくいかないとき
+
+- スラッシュが出ない … `GUILD_ID` を入れて再起動。Developer Portal で `applications.commands` 付きで招待し直す
+- 交換コードが来ない … 各 `*_CHANNEL_ID` とチャンネル権限。`/fancode check`
+- ビルドカードが空 … キャラクター紹介が非公開か、出したキャラがいない
+- 開始ボタンが動かない … Bot が落ちていないか。ピンも過去のカード下ボタンも、起動中なら効く
+- 部屋ができない … Voice State Intent、チャンネルの管理、メンバーの移動、招待を作成。`/vc panel`、`VC_PANEL_CHANNEL_ID` `VC_RECRUIT_CHANNEL_ID` `VC_CREATE_CATEGORY_ID`
+- 参加リンクが出せない … 招待を作成する権限。埋め込みの URL か「参加する」から入れる
+- ニックネームが `おしーそBot` にならない … ニックネームの変更権限。Portal のユーザー名は手動
+
+ログは `logs/yyyymmdd.log`。Issue にトークンや `.env` は貼らない。

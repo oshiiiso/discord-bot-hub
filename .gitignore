@@ -1,0 +1,48 @@
+# Virtual Environment
+.venv/
+
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python-version
+
+# Logs
+logs/
+*.log
+
+# FanCode の実行時データ
+data/fancode/
+
+# VS Code
+.vscode/
+
+# Pytest
+.pytest_cache/
+
+# Ruff
+.ruff_cache/
+
+# mypy
+.mypy_cache/
+
+# Runtime cache
+storage/enka_assets/
+storage/enka_store/
+storage/learned_characters.json
+storage/preview*.png
+storage/preview_assets/
+storage/vc_rooms.json
+storage/*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cursor
+.cursor/
+.cursorignore
