@@ -39,6 +39,7 @@ class Room:
     owner_id: int
     occupied_once: bool = False
     created_at: float = 0.0
+    card_message_id: int = 0
 
 
 def load_rooms(path: Path = ROOMS_PATH) -> dict[int, Room]:
@@ -65,6 +66,7 @@ def load_rooms(path: Path = ROOMS_PATH) -> dict[int, Room]:
                 owner_id=int(item["owner_id"]),
                 occupied_once=bool(item.get("occupied_once", False)),
                 created_at=float(item.get("created_at") or 0.0),
+                card_message_id=int(item.get("card_message_id") or 0),
             )
         except (KeyError, TypeError, ValueError):
             continue

@@ -24,12 +24,13 @@ from vc_manager.config import (
 )
 from vc_manager.create_view import (
     VcCreateButton,
+    apply_occupied_count,
     create_room_view,
     is_panel_message,
     panel_embed,
     recruit_embed,
 )
-from vc_manager.join_view import VcJoinButton, recruit_view
+from vc_manager.join_view import VcJoinButton
 from vc_manager.rooms import (
     Room,
     composed_room_name,
@@ -65,6 +66,7 @@ class VcManagerCog(commands.Cog):
         self._cooldowns: dict[int, datetime] = {}
         self._owner_prompts: dict[int, list[discord.Interaction]] = {}
         self._active_names: dict[int, str] = {}
+        self._embed_tasks: dict[int, asyncio.Task[None]] = {}
         self._lock = asyncio.Lock()
         self._create_lock = asyncio.Lock()
 
@@ -79,6 +81,9 @@ class VcManagerCog(commands.Cog):
         for task in list(self._grace_tasks.values()):
             task.cancel()
         self._grace_tasks.clear()
+        for task in list(self._embed_tasks.values()):
+            task.cancel()
+        self._embed_tasks.clear()
 
     @vc.command(name="ping", description=msg.MSG_CMD_PING)
     async def ping(self, interaction: discord.Interaction) -> None:
@@ -322,9 +327,8 @@ class VcManagerCog(commands.Cog):
         if result.moved:
             await send_ephemeral(interaction, msg.MSG_CREATED_MOVED)
             return
-        view = recruit_view(result.channel_id) if result.channel_id else None
         content = msg.MSG_CREATED_JOIN.format(url=result.invite_url) if result.invite_url else msg.MSG_CREATED
-        await send_ephemeral(interaction, content, persist=True, view=view)
+        await send_ephemeral(interaction, content, persist=True)
         if result.channel_id:
             self._remember_owner_prompt(result.channel_id, interaction)
 
@@ -367,12 +371,13 @@ class VcManagerCog(commands.Cog):
             await self._abandon_channel(new_channel, "募集チャンネルが無い")
             return _CreateResult(ok=False)
 
-        try:
-            invite = await new_channel.create_invite(max_age=0, max_uses=0, unique=False)
-        except discord.HTTPException:
-            logger.exception("部屋の招待作成に失敗しました channel_id=%s", new_channel.id)
-            await self._abandon_channel(new_channel, "招待を作れなかった部屋")
-            return _CreateResult(ok=False)
+        invite_url = ""
+        if not moved:
+            try:
+                invite = await new_channel.create_invite(max_age=0, max_uses=0, unique=False)
+                invite_url = invite.url
+            except discord.HTTPException:
+                logger.warning("作成者向けの招待を作れませんでした channel_id=%s", new_channel.id)
 
         occupied = _human_count(new_channel)
         embed = recruit_embed(
@@ -384,10 +389,9 @@ class VcManagerCog(commands.Cog):
             occupied=occupied,
             occupancy=occupancy,
             room_mention=new_channel.mention,
-            invite_url=invite.url,
         )
         try:
-            posted = await recruit.send(embed=embed, view=recruit_view(new_channel.id))
+            posted = await recruit.send(embed=embed)
         except discord.HTTPException:
             logger.exception("募集埋め込みの投稿に失敗しました channel_id=%s", new_channel.id)
             await self._abandon_channel(new_channel, "募集埋め込みを出せなかった部屋")
@@ -398,7 +402,7 @@ class VcManagerCog(commands.Cog):
             guild_id=member.guild.id,
             message_id=posted.id,
             recruit_channel_id=recruit.id,
-            invite_url=invite.url,
+            invite_url=invite_url,
             owner_id=member.id,
             occupied_once=moved or _human_count(new_channel) > 0,
             created_at=time.time(),
@@ -413,7 +417,7 @@ class VcManagerCog(commands.Cog):
         return _CreateResult(
             ok=True,
             moved=moved,
-            invite_url=invite.url,
+            invite_url=invite_url,
             channel_id=new_channel.id,
         )
 
@@ -447,6 +451,7 @@ class VcManagerCog(commands.Cog):
             await self._clear_server_mute(member)
         if member.id == room.owner_id:
             await self._clear_owner_prompts(channel_id)
+        self._schedule_recruit_count(channel_id)
 
     async def _clear_server_mute(self, member: discord.Member) -> None:
         voice = member.voice
@@ -465,10 +470,12 @@ class VcManagerCog(commands.Cog):
             return
         if _human_count(channel) > 0:
             self._cancel_grace(channel_id)
+            self._schedule_recruit_count(channel_id)
             return
         if room is None:
             self._cancel_grace(channel_id)
             return
+        self._schedule_recruit_count(channel_id)
         if room.occupied_once:
             self._schedule_occupied_empty(channel_id)
             return
@@ -495,6 +502,54 @@ class VcManagerCog(commands.Cog):
         if task is asyncio.current_task():
             return
         task.cancel()
+
+    def _schedule_recruit_count(self, channel_id: int) -> None:
+        self._cancel_recruit_count(channel_id)
+        self._embed_tasks[channel_id] = asyncio.create_task(self._refresh_recruit_count(channel_id))
+
+    def _cancel_recruit_count(self, channel_id: int) -> None:
+        task = self._embed_tasks.pop(channel_id, None)
+        if task is None:
+            return
+        if task is asyncio.current_task():
+            return
+        task.cancel()
+
+    async def _refresh_recruit_count(self, channel_id: int) -> None:
+        try:
+            await asyncio.sleep(0.4)
+            room = self._rooms.get(channel_id)
+            if room is None:
+                return
+            channel = await self._resolve_voice_channel(channel_id)
+            if channel is None:
+                return
+            recruit = await self._resolve_text_channel(room.recruit_channel_id)
+            if recruit is None:
+                return
+            try:
+                message = await recruit.fetch_message(room.message_id)
+            except discord.NotFound:
+                return
+            except discord.HTTPException:
+                logger.exception("募集人数の取得に失敗しました message_id=%s", room.message_id)
+                return
+            if not message.embeds:
+                return
+            embed = message.embeds[0]
+            if not apply_occupied_count(embed, _human_count(channel)):
+                return
+            try:
+                await message.edit(embed=embed)
+            except discord.HTTPException:
+                logger.exception("募集人数の更新に失敗しました message_id=%s", room.message_id)
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            logger.exception("募集人数の更新に失敗しました channel_id=%s", channel_id)
+        finally:
+            if self._embed_tasks.get(channel_id) is asyncio.current_task():
+                self._embed_tasks.pop(channel_id, None)
 
     async def _delayed_delete(self, channel_id: int, delay: float) -> None:
         try:
@@ -523,6 +578,7 @@ class VcManagerCog(commands.Cog):
             if room is not None:
                 save_rooms(self._rooms)
         self._cancel_grace(channel_id)
+        self._cancel_recruit_count(channel_id)
         self._active_names.pop(channel_id, None)
         await self._clear_owner_prompts(channel_id)
         channel = await self._resolve_voice_channel(channel_id)
@@ -536,13 +592,16 @@ class VcManagerCog(commands.Cog):
         channel = await self._resolve_text_channel(room.recruit_channel_id)
         if channel is None:
             return
-        try:
-            message = await channel.fetch_message(room.message_id)
-            await message.delete()
-        except discord.NotFound:
-            return
-        except discord.HTTPException:
-            logger.exception("募集埋め込みの削除に失敗しました message_id=%s", room.message_id)
+        for message_id in (room.message_id, room.card_message_id):
+            if not message_id:
+                continue
+            try:
+                message = await channel.fetch_message(message_id)
+                await message.delete()
+            except discord.NotFound:
+                continue
+            except discord.HTTPException:
+                logger.exception("募集メッセージの削除に失敗しました message_id=%s", message_id)
 
     async def _reconcile_rooms(self) -> None:
         """再起動後、残っている部屋と埋め込みを実際の VC に合わせる。"""
@@ -557,6 +616,7 @@ class VcManagerCog(commands.Cog):
                     if not room.occupied_once:
                         room.occupied_once = True
                         save_rooms(self._rooms)
+                    self._schedule_recruit_count(channel_id)
                     continue
                 if room.occupied_once:
                     self._schedule_occupied_empty(channel_id)

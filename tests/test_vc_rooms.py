@@ -2,8 +2,18 @@
 
 from pathlib import Path
 
-from vc_manager.create_view import format_duration_ja, panel_embed, recruit_embed
-from vc_manager.messages import MSG_EMBED_UNTIL, MSG_PANEL_TITLE, MSG_ROOM_KINDS, ROOM_KIND_LABELS
+from vc_manager.create_view import apply_occupied_count, format_duration_ja, panel_embed, recruit_embed
+from vc_manager.messages import (
+    MSG_EMBED_KIND,
+    MSG_EMBED_ROOM,
+    MSG_EMBED_UNTIL,
+    MSG_PANEL_FIELD_EXAMPLE,
+    MSG_PANEL_FIELD_HOW,
+    MSG_PANEL_FIELD_NOTE,
+    MSG_PANEL_TITLE,
+    MSG_ROOM_KINDS,
+    ROOM_KIND_LABELS,
+)
 from vc_manager.rooms import (
     Room,
     clip_plain,
@@ -103,6 +113,7 @@ def test_load_rooms_occupied_once_defaults_false(tmp_path: Path) -> None:
     loaded = load_rooms(path)
     assert loaded[1].occupied_once is False
     assert loaded[1].created_at == 0.0
+    assert loaded[1].card_message_id == 0
 
 
 def test_format_duration_ja() -> None:
@@ -115,15 +126,14 @@ def test_format_duration_ja() -> None:
 def test_panel_embed_explains_flow() -> None:
     embed = panel_embed()
     assert embed.title == MSG_PANEL_TITLE
-    assert embed.description is not None
-    field_names = [field.name for field in embed.fields]
-    assert "使い方" in field_names
-    assert "きまり" in field_names
-    note = next(field.value for field in embed.fields if field.name == "きまり")
-    assert "5分" in note
-    assert "10秒" in note
-    assert embed.footer.text is not None
-    assert "原神-探索-夜まで" in embed.footer.text
+    description = embed.description or ""
+    assert f"**{MSG_PANEL_FIELD_HOW}**" in description
+    assert f"**{MSG_PANEL_FIELD_NOTE}**" in description
+    assert f"**{MSG_PANEL_FIELD_EXAMPLE}**" in description
+    assert "5分" in description
+    assert "10秒" in description
+    assert "原神-探索-夜まで" in description
+    assert embed.fields == []
 
 
 def test_recruit_embed_includes_until_when_set() -> None:
@@ -136,11 +146,16 @@ def test_recruit_embed_includes_until_when_set() -> None:
         occupied=1,
         occupancy=15,
         room_mention="<#2>",
-        invite_url="https://discord.gg/test",
     )
-    names = [field.name for field in with_until.fields]
-    assert MSG_EMBED_UNTIL in names
-    assert with_until.fields[names.index(MSG_EMBED_UNTIL)].value == "25:00"
+    description = with_until.description or ""
+    assert "<@1> が部屋を作りました" in description
+    assert "世界ランク60" in description
+    assert f"**{MSG_EMBED_UNTIL}**\n25:00" in description
+    assert f"**{MSG_EMBED_KIND}**\n原神" in description
+    assert "**👥 人数**\n1/15" in description
+    assert f"**{MSG_EMBED_ROOM}**\n<#2>" in description
+    assert description.index("世界ランク60") < description.index(MSG_EMBED_KIND)
+    assert with_until.fields == []
 
     without = recruit_embed(
         name="原神-聖遺物厳選",
@@ -151,9 +166,44 @@ def test_recruit_embed_includes_until_when_set() -> None:
         occupied=0,
         occupancy=15,
         room_mention="<#2>",
-        invite_url="https://discord.gg/test",
     )
-    assert MSG_EMBED_UNTIL not in [field.name for field in without.fields]
+    assert MSG_EMBED_UNTIL not in (without.description or "")
+    assert "**👥 人数**\n0/15" in (without.description or "")
+
+
+def test_apply_occupied_count_updates_description() -> None:
+    embed = recruit_embed(
+        name="原神-聖遺物厳選",
+        mention="<@1>",
+        details="",
+        until="25:00",
+        kind_label="原神",
+        occupied=0,
+        occupancy=15,
+        room_mention="<#2>",
+    )
+    assert apply_occupied_count(embed, 3) is True
+    assert "**👥 人数**\n3/15" in (embed.description or "")
+    assert apply_occupied_count(embed, 3) is False
+
+
+def test_apply_occupied_count_updates_legacy_field() -> None:
+    embed = recruit_embed(
+        name="原神-聖遺物厳選",
+        mention="<@1>",
+        details="",
+        until="",
+        kind_label="原神",
+        occupied=1,
+        occupancy=8,
+        room_mention="<#2>",
+    )
+    embed.description = "<@1> が部屋を作りました"
+    embed.clear_fields()
+    embed.add_field(name="人数", value="1/8", inline=True)
+    embed.add_field(name="参加する", value="https://discord.gg/test", inline=False)
+    assert apply_occupied_count(embed, 4) is True
+    assert embed.fields[0].value == "4/8"
 
 
 def test_vacant_remaining_seconds() -> None:

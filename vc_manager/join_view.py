@@ -54,10 +54,3 @@ class VcJoinButton(
         except Exception:
             logger.exception("参加ボタンの処理に失敗しました channel_id=%s", self.channel_id)
             await send_ephemeral(interaction, msg.MSG_INVITE_FAILED)
-
-
-def recruit_view(channel_id: int) -> discord.ui.View:
-    """募集メッセージと作成後エフェメラルに載せる参加ボタン。"""
-    view = discord.ui.View(timeout=None)
-    view.add_item(VcJoinButton(channel_id))
-    return view

@@ -182,6 +182,11 @@ def create_room_view() -> discord.ui.View:
     return view
 
 
+def _labeled_block(label: str, value: str) -> str:
+    """項目名は太字、値は通常。項目同士は空行で区切る。"""
+    return f"**{label}**\n{value}"
+
+
 def recruit_embed(
     *,
     name: str,
@@ -192,20 +197,53 @@ def recruit_embed(
     occupied: int,
     occupancy: int,
     room_mention: str,
-    invite_url: str,
 ) -> discord.Embed:
-    """募集チャンネルに出す埋め込み。"""
-    description = msg.MSG_EMBED_DESCRIPTION.format(mention=mention)
+    """募集チャンネルに出す埋め込み。参加は部屋のメンションから入る。"""
+    blocks = [msg.MSG_EMBED_DESCRIPTION.format(mention=mention)]
     if details:
-        description = f"{description}\n\n{details}"
-    embed = discord.Embed(title=name, description=description, color=0x5865F2)
-    embed.add_field(name=msg.MSG_EMBED_KIND, value=kind_label, inline=True)
-    embed.add_field(name=msg.MSG_EMBED_CAPACITY, value=f"{occupied}/{occupancy}", inline=True)
+        blocks.append(details)
+    items = [
+        _labeled_block(msg.MSG_EMBED_KIND, kind_label),
+        _labeled_block(msg.MSG_EMBED_CAPACITY, f"{occupied}/{occupancy}"),
+    ]
     if until:
-        embed.add_field(name=msg.MSG_EMBED_UNTIL, value=until, inline=True)
-    embed.add_field(name=msg.MSG_EMBED_ROOM, value=room_mention, inline=True)
-    embed.add_field(name=msg.MSG_JOIN_BUTTON, value=invite_url, inline=False)
-    return embed
+        items.append(_labeled_block(msg.MSG_EMBED_UNTIL, until))
+    items.append(_labeled_block(msg.MSG_EMBED_ROOM, room_mention))
+    blocks.append("\n\n".join(items))
+    return discord.Embed(title=name, description="\n\n".join(blocks), color=0x5865F2)
+
+
+_OCCUPANCY_IN_DESC = re.compile(r"(\*\*(?:👥 )?人数\*\*|(?:👥 )?人数)\n(\d+)/(\d+)")
+
+
+def apply_occupied_count(embed: discord.Embed, occupied: int) -> bool:
+    """募集埋め込みの現在人数を合わせる。変わったら True。"""
+    changed = False
+    description = embed.description or ""
+    replaced, count = _OCCUPANCY_IN_DESC.subn(
+        lambda m: f"{m.group(1)}\n{occupied}/{m.group(3)}",
+        description,
+        count=1,
+    )
+    if count and replaced != description:
+        embed.description = replaced
+        changed = True
+    for i, field in enumerate(embed.fields):
+        name = field.name or ""
+        if name != msg.MSG_EMBED_CAPACITY and not name.endswith("人数"):
+            continue
+        value = field.value or ""
+        if "/" not in value:
+            break
+        max_part = value.rsplit("/", 1)[-1].strip()
+        if not max_part.isdigit():
+            break
+        new_val = f"{occupied}/{max_part}"
+        if new_val != value:
+            embed.set_field_at(i, name=name, value=new_val, inline=field.inline)
+            changed = True
+        break
+    return changed
 
 
 def format_duration_ja(seconds: int) -> str:
@@ -218,23 +256,24 @@ def format_duration_ja(seconds: int) -> str:
 
 
 def panel_embed() -> discord.Embed:
-    embed = discord.Embed(
+    note = msg.MSG_PANEL_NOTE.format(
+        vacant=format_duration_ja(VACANT_TIMEOUT_SECONDS),
+        empty=format_duration_ja(EMPTY_GRACE_SECONDS),
+        cooldown=format_duration_ja(CREATE_COOLDOWN_SECONDS),
+    )
+    description = "\n\n".join(
+        [
+            msg.MSG_PANEL_DESCRIPTION,
+            _labeled_block(msg.MSG_PANEL_FIELD_HOW, msg.MSG_PANEL_HOW),
+            _labeled_block(msg.MSG_PANEL_FIELD_NOTE, note),
+            _labeled_block(msg.MSG_PANEL_FIELD_EXAMPLE, msg.MSG_PANEL_FOOTER),
+        ]
+    )
+    return discord.Embed(
         title=msg.MSG_PANEL_TITLE,
-        description=msg.MSG_PANEL_DESCRIPTION,
+        description=description,
         color=0x5865F2,
     )
-    embed.add_field(name=msg.MSG_PANEL_FIELD_HOW, value=msg.MSG_PANEL_HOW, inline=False)
-    embed.add_field(
-        name=msg.MSG_PANEL_FIELD_NOTE,
-        value=msg.MSG_PANEL_NOTE.format(
-            vacant=format_duration_ja(VACANT_TIMEOUT_SECONDS),
-            empty=format_duration_ja(EMPTY_GRACE_SECONDS),
-            cooldown=format_duration_ja(CREATE_COOLDOWN_SECONDS),
-        ),
-        inline=False,
-    )
-    embed.set_footer(text=msg.MSG_PANEL_FOOTER)
-    return embed
 
 
 def is_panel_message(message: discord.Message, bot_id: int) -> bool:
