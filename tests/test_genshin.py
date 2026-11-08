@@ -55,15 +55,11 @@ def test_messages_load() -> None:
 
 def test_start_view_persistent() -> None:
     from config import START_BUTTON_CUSTOM_ID
-    from ui.start_view import CardMessageView, StartCardView
+    from ui.start_view import StartCardView
 
     view = StartCardView()
     assert view.timeout is None
     assert any(getattr(item, "custom_id", None) == START_BUTTON_CUSTOM_ID for item in view.children)
-
-    card = CardMessageView("テスト")
-    ids = [getattr(item, "custom_id", None) for item in card.walk_children()]
-    assert START_BUTTON_CUSTOM_ID in ids
 
 
 def test_latest_characters_and_sets() -> None:

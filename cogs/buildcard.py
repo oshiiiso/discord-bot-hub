@@ -31,7 +31,7 @@ from services.copy import t
 from services.enka_client import EnkaAvatar, EnkaClient, EnkaError, EnkaShowcase
 from services.session_store import SessionStore, UidSession
 from ui.guide_embed import formula_embed, guide_embed, is_guide_message
-from ui.start_view import CardMessageView, StartCardView
+from ui.start_view import StartCardView
 from ui.uid_view import UidPickView
 
 logger = get_logger(__name__)
@@ -579,12 +579,12 @@ class BuildCog(commands.Cog):
             await edit_original(interaction, content=t(msg.ERR_13), view=None)
             return
         file = discord.File(fp=BytesIO(png), filename="build.png")
+        headline = t(msg.MSG_33, nickname=session.nickname, character=avatar.name_ja)
         try:
             await channel.send(
+                content=f"{headline}\n{t(msg.MSG_02)}",
                 file=file,
-                view=CardMessageView(
-                    t(msg.MSG_33, nickname=session.nickname, character=avatar.name_ja)
-                ),
+                view=StartCardView(),
             )
         except discord.HTTPException:
             logger.warning("カードの投稿に失敗しました channel=%s", channel.id)

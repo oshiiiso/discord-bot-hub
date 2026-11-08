@@ -26,19 +26,6 @@ class StartCardView(discord.ui.View):
         self.add_item(_StartButton())
 
 
-class CardMessageView(discord.ui.LayoutView):
-    """カード画像の下に案内と開始ボタンを置く。"""
-
-    def __init__(self, headline: str) -> None:
-        super().__init__(timeout=None)
-        gallery = discord.ui.MediaGallery()
-        gallery.add_item(media="attachment://build.png")
-        self.add_item(discord.ui.TextDisplay(headline))
-        self.add_item(gallery)
-        self.add_item(discord.ui.TextDisplay(t(msg.MSG_02)))
-        self.add_item(discord.ui.ActionRow(_StartButton()))
-
-
 class _StartButton(discord.ui.Button):
     def __init__(self) -> None:
         super().__init__(
