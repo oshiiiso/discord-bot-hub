@@ -2,11 +2,17 @@
 
 from pathlib import Path
 
-from vc_manager.create_view import apply_occupied_count, format_duration_ja, panel_embed, recruit_embed
+from vc_manager.create_view import (
+    apply_occupied_count,
+    format_capacity,
+    format_duration_ja,
+    panel_embed,
+    recruit_embed,
+)
 from vc_manager.messages import (
     MSG_EMBED_KIND,
     MSG_EMBED_ROOM,
-    MSG_EMBED_UNTIL,
+    MSG_OCCUPANCY_UNLIMITED,
     MSG_PANEL_FIELD_EXAMPLE,
     MSG_PANEL_FIELD_HOW,
     MSG_PANEL_FIELD_NOTE,
@@ -32,23 +38,19 @@ def test_sanitize_channel_name_uses_custom() -> None:
 
 
 def test_composed_room_name_joins_parts() -> None:
-    assert composed_room_name("原神", "聖遺物厳選", "夜まで") == "原神-聖遺物厳選-夜まで"
+    assert composed_room_name("原神", "聖遺物厳選") == "原神-聖遺物厳選"
 
 
 def test_composed_room_name_skips_empty_title() -> None:
-    assert composed_room_name("原神", "", "夜まで") == "原神-夜まで"
-
-
-def test_composed_room_name_skips_empty_until() -> None:
-    assert composed_room_name("Among Us", "初心者", "") == "Among Us-初心者"
+    assert composed_room_name("原神", "") == "原神"
 
 
 def test_composed_room_name_game_only() -> None:
-    assert composed_room_name("原神", "", "") == "原神"
+    assert composed_room_name("Among Us", "") == "Among Us"
 
 
 def test_composed_room_name_truncates_to_100() -> None:
-    name = composed_room_name("原神", "あ" * 80, "い" * 80)
+    name = composed_room_name("原神", "あ" * 120)
     assert name.startswith("原神-")
     assert len(name) <= 100
 
@@ -72,14 +74,15 @@ def test_room_kinds_include_requested_labels() -> None:
 
 
 def test_parse_occupancy_default_and_range() -> None:
-    assert parse_occupancy("") == 15
+    assert parse_occupancy("") is None
     assert parse_occupancy(" 8 ") == 8
     assert parse_occupancy("1") == 1
     assert parse_occupancy("15") == 15
+    assert parse_occupancy("99") == 99
     assert parse_occupancy("１５") == 15
     assert parse_occupancy("８") == 8
     assert parse_occupancy("0") is None
-    assert parse_occupancy("16") is None
+    assert parse_occupancy("100") is None
     assert parse_occupancy("abc") is None
     assert parse_occupancy("１５人") is None
     assert parse_occupancy("1.5") is None
@@ -132,43 +135,45 @@ def test_panel_embed_explains_flow() -> None:
     assert f"**{MSG_PANEL_FIELD_EXAMPLE}**" in description
     assert "5分" in description
     assert "10秒" in description
-    assert "原神-探索-夜まで" in description
+    assert "原神-探索" in description
     assert embed.fields == []
 
 
-def test_recruit_embed_includes_until_when_set() -> None:
-    with_until = recruit_embed(
+def test_format_capacity_unlimited() -> None:
+    assert format_capacity(0, 0) == f"0/{MSG_OCCUPANCY_UNLIMITED}"
+    assert format_capacity(3, 0) == f"3/{MSG_OCCUPANCY_UNLIMITED}"
+    assert format_capacity(3, 15) == "3/15"
+
+
+def test_recruit_embed_includes_details_and_join() -> None:
+    with_details = recruit_embed(
         name="原神-聖遺物厳選",
         mention="<@1>",
-        details="世界ランク60",
-        until="25:00",
+        details="世界ランク60 / 夜まで",
         kind_label="原神",
         occupied=1,
         occupancy=15,
         room_mention="<#2>",
     )
-    description = with_until.description or ""
+    description = with_details.description or ""
     assert "<@1> が部屋を作りました" in description
-    assert "世界ランク60" in description
-    assert f"**{MSG_EMBED_UNTIL}**\n25:00" in description
+    assert "世界ランク60 / 夜まで" in description
     assert f"**{MSG_EMBED_KIND}**\n原神" in description
     assert "**👥 人数**\n1/15" in description
     assert f"**{MSG_EMBED_ROOM}**\n<#2>" in description
-    assert description.index("世界ランク60") < description.index(MSG_EMBED_KIND)
-    assert with_until.fields == []
+    assert description.index("世界ランク60 / 夜まで") < description.index(MSG_EMBED_KIND)
+    assert with_details.fields == []
 
     without = recruit_embed(
         name="原神-聖遺物厳選",
         mention="<@1>",
         details="",
-        until="",
         kind_label="原神",
         occupied=0,
-        occupancy=15,
+        occupancy=0,
         room_mention="<#2>",
     )
-    assert MSG_EMBED_UNTIL not in (without.description or "")
-    assert "**👥 人数**\n0/15" in (without.description or "")
+    assert f"**👥 人数**\n0/{MSG_OCCUPANCY_UNLIMITED}" in (without.description or "")
 
 
 def test_apply_occupied_count_updates_description() -> None:
@@ -176,7 +181,6 @@ def test_apply_occupied_count_updates_description() -> None:
         name="原神-聖遺物厳選",
         mention="<@1>",
         details="",
-        until="25:00",
         kind_label="原神",
         occupied=0,
         occupancy=15,
@@ -186,13 +190,24 @@ def test_apply_occupied_count_updates_description() -> None:
     assert "**👥 人数**\n3/15" in (embed.description or "")
     assert apply_occupied_count(embed, 3) is False
 
+    unlimited = recruit_embed(
+        name="雑談",
+        mention="<@1>",
+        details="",
+        kind_label="雑談",
+        occupied=0,
+        occupancy=0,
+        room_mention="<#2>",
+    )
+    assert apply_occupied_count(unlimited, 2) is True
+    assert f"**👥 人数**\n2/{MSG_OCCUPANCY_UNLIMITED}" in (unlimited.description or "")
+
 
 def test_apply_occupied_count_updates_legacy_field() -> None:
     embed = recruit_embed(
         name="原神-聖遺物厳選",
         mention="<@1>",
         details="",
-        until="",
         kind_label="原神",
         occupied=1,
         occupancy=8,

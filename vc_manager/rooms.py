@@ -12,10 +12,8 @@ from pathlib import Path
 from logging_config import get_logger
 from vc_manager.config import (
     CHANNEL_NAME_MAX,
-    DEFAULT_OCCUPANCY,
     MAX_OCCUPANCY,
     ROOM_TITLE_MAX,
-    ROOM_UNTIL_MAX,
     ROOMS_PATH,
     VACANT_TIMEOUT_SECONDS,
 )
@@ -117,20 +115,15 @@ def sanitize_channel_name(name: str, fallback: str = "ゲスト") -> str:
     return body[:CHANNEL_NAME_MAX]
 
 
-def composed_room_name(kind: str, title: str, until: str) -> str:
-    """種類-部屋名-何時まで。空の段は付けない。全体は 100 字以内。"""
+def composed_room_name(kind: str, title: str) -> str:
+    """種類-部屋名。空の段は付けない。全体は 100 字以内。"""
     game_part = clip_plain(kind, CHANNEL_NAME_MAX) or "その他"
     title_part = clip_plain(title, ROOM_TITLE_MAX)
-    until_part = clip_plain(until, ROOM_UNTIL_MAX)
     leftover = CHANNEL_NAME_MAX - len(game_part)
     parts = [game_part]
     if title_part and leftover > 1:
         title_part = title_part[: leftover - 1]
         parts.append(title_part)
-        leftover -= 1 + len(title_part)
-    if until_part and leftover > 1:
-        until_part = until_part[: leftover - 1]
-        parts.append(until_part)
     return "-".join(parts)[:CHANNEL_NAME_MAX]
 
 
@@ -150,11 +143,9 @@ def unique_channel_name(base: str, taken: set[str]) -> str:
 
 
 def parse_occupancy(raw: str) -> int | None:
-    """入室人数。全角数字は半角にする。空なら既定。数字以外は None。"""
+    """制限人数（1〜MAX）。全角数字は半角にする。空・不正は None。"""
     text = unicodedata.normalize("NFKC", raw).strip()
-    if not text:
-        return DEFAULT_OCCUPANCY
-    if not text.isdigit():
+    if not text or not text.isdigit():
         return None
     value = int(text)
     if 1 <= value <= MAX_OCCUPANCY:

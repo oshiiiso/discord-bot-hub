@@ -12,11 +12,10 @@ from replies import send_ephemeral
 from vc_manager import messages as msg
 from vc_manager.config import (
     CREATE_COOLDOWN_SECONDS,
-    DEFAULT_OCCUPANCY,
     EMPTY_GRACE_SECONDS,
     ROOM_DETAILS_MAX,
     ROOM_TITLE_MAX,
-    ROOM_UNTIL_MAX,
+    UNLIMITED_OCCUPANCY,
     VACANT_TIMEOUT_SECONDS,
 )
 from vc_manager.rooms import clip_plain, parse_occupancy
@@ -72,7 +71,7 @@ class VcCreateButton(
 
 
 class CreateRoomModal(discord.ui.Modal, title=msg.MSG_MODAL_TITLE):
-    """種類・部屋名・何時まで・詳細・人数。"""
+    """種類・部屋名・詳細・人数無制限・人数。"""
 
     def __init__(self) -> None:
         super().__init__(timeout=300)
@@ -90,21 +89,19 @@ class CreateRoomModal(discord.ui.Modal, title=msg.MSG_MODAL_TITLE):
             max_length=ROOM_TITLE_MAX,
             placeholder=msg.MSG_MODAL_NAME_PLACEHOLDER,
         )
-        self.until_input = discord.ui.TextInput(
-            required=False,
-            max_length=ROOM_UNTIL_MAX,
-            placeholder=msg.MSG_MODAL_UNTIL_PLACEHOLDER,
-        )
         self.details_input = discord.ui.TextInput(
             style=discord.TextStyle.paragraph,
             required=False,
             max_length=ROOM_DETAILS_MAX,
             placeholder=msg.MSG_MODAL_DETAILS_PLACEHOLDER,
         )
+        self.unlimited_checkbox = discord.ui.Checkbox(
+            custom_id="vc:unlimited",
+            default=True,
+        )
         self.occupancy_input = discord.ui.TextInput(
             required=False,
             max_length=2,
-            default=str(DEFAULT_OCCUPANCY),
             placeholder=msg.MSG_MODAL_OCCUPANCY_PLACEHOLDER,
         )
         self.add_item(
@@ -123,16 +120,16 @@ class CreateRoomModal(discord.ui.Modal, title=msg.MSG_MODAL_TITLE):
         )
         self.add_item(
             discord.ui.Label(
-                text=msg.MSG_MODAL_UNTIL,
-                description=msg.MSG_MODAL_UNTIL_DESC,
-                component=self.until_input,
+                text=msg.MSG_MODAL_DETAILS,
+                description=msg.MSG_MODAL_DETAILS_DESC,
+                component=self.details_input,
             )
         )
         self.add_item(
             discord.ui.Label(
-                text=msg.MSG_MODAL_DETAILS,
-                description=msg.MSG_MODAL_DETAILS_DESC,
-                component=self.details_input,
+                text=msg.MSG_MODAL_UNLIMITED,
+                description=msg.MSG_MODAL_UNLIMITED_DESC,
+                component=self.unlimited_checkbox,
             )
         )
         self.add_item(
@@ -154,19 +151,20 @@ class CreateRoomModal(discord.ui.Modal, title=msg.MSG_MODAL_TITLE):
         if kind_label is None:
             await send_ephemeral(interaction, msg.MSG_KIND_INVALID)
             return
-        occupancy = parse_occupancy(str(self.occupancy_input.value or ""))
-        if occupancy is None:
-            await send_ephemeral(interaction, msg.MSG_OCCUPANCY_INVALID, persist=True)
-            return
+        if self.unlimited_checkbox.value:
+            occupancy = UNLIMITED_OCCUPANCY
+        else:
+            occupancy = parse_occupancy(str(self.occupancy_input.value or ""))
+            if occupancy is None:
+                await send_ephemeral(interaction, msg.MSG_OCCUPANCY_INVALID, persist=True)
+                return
         title = clip_plain(str(self.name_input.value or ""), ROOM_TITLE_MAX)
         details = clip_plain(str(self.details_input.value or ""), ROOM_DETAILS_MAX, keep_newlines=True)
-        until = clip_plain(str(self.until_input.value or ""), ROOM_UNTIL_MAX)
         await cog.complete_create_room(
             interaction,
             kind_label=kind_label,
             title=title,
             details=details,
-            until=until,
             occupancy=occupancy,
         )
 
@@ -187,12 +185,18 @@ def _labeled_block(label: str, value: str) -> str:
     return f"**{label}**\n{value}"
 
 
+def format_capacity(occupied: int, occupancy: int) -> str:
+    """募集埋め込み用の人数表示。0 以下は無制限。"""
+    if occupancy <= UNLIMITED_OCCUPANCY:
+        return f"{occupied}/{msg.MSG_OCCUPANCY_UNLIMITED}"
+    return f"{occupied}/{occupancy}"
+
+
 def recruit_embed(
     *,
     name: str,
     mention: str,
     details: str,
-    until: str,
     kind_label: str,
     occupied: int,
     occupancy: int,
@@ -204,16 +208,16 @@ def recruit_embed(
         blocks.append(details)
     items = [
         _labeled_block(msg.MSG_EMBED_KIND, kind_label),
-        _labeled_block(msg.MSG_EMBED_CAPACITY, f"{occupied}/{occupancy}"),
+        _labeled_block(msg.MSG_EMBED_CAPACITY, format_capacity(occupied, occupancy)),
+        _labeled_block(msg.MSG_EMBED_ROOM, room_mention),
     ]
-    if until:
-        items.append(_labeled_block(msg.MSG_EMBED_UNTIL, until))
-    items.append(_labeled_block(msg.MSG_EMBED_ROOM, room_mention))
     blocks.append("\n\n".join(items))
     return discord.Embed(title=name, description="\n\n".join(blocks), color=0x5865F2)
 
 
-_OCCUPANCY_IN_DESC = re.compile(r"(\*\*(?:👥 )?人数\*\*|(?:👥 )?人数)\n(\d+)/(\d+)")
+_OCCUPANCY_IN_DESC = re.compile(
+    rf"(\*\*(?:👥 )?人数\*\*|(?:👥 )?人数)\n(\d+)/(\d+|{re.escape(msg.MSG_OCCUPANCY_UNLIMITED)})"
+)
 
 
 def apply_occupied_count(embed: discord.Embed, occupied: int) -> bool:
@@ -236,7 +240,7 @@ def apply_occupied_count(embed: discord.Embed, occupied: int) -> bool:
         if "/" not in value:
             break
         max_part = value.rsplit("/", 1)[-1].strip()
-        if not max_part.isdigit():
+        if not max_part.isdigit() and max_part != msg.MSG_OCCUPANCY_UNLIMITED:
             break
         new_val = f"{occupied}/{max_part}"
         if new_val != value:

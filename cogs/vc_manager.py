@@ -280,7 +280,6 @@ class VcManagerCog(commands.Cog):
         kind_label: str,
         title: str,
         details: str,
-        until: str,
         occupancy: int,
     ) -> None:
         """モーダル送信後に部屋を作り、募集へ埋め込みリンクを出す。"""
@@ -308,7 +307,6 @@ class VcManagerCog(commands.Cog):
                 kind_label=kind_label,
                 title=title,
                 details=details,
-                until=until,
                 occupancy=occupancy,
             )
             await self._send_create_result(interaction, result)
@@ -339,7 +337,6 @@ class VcManagerCog(commands.Cog):
         kind_label: str,
         title: str,
         details: str,
-        until: str,
         occupancy: int,
     ) -> _CreateResult:
         category = await self._resolve_category()
@@ -350,7 +347,7 @@ class VcManagerCog(commands.Cog):
         async with self._create_lock:
             taken = {channel.name for channel in category.channels}
             taken.update(self._active_names.values())
-            name = unique_channel_name(composed_room_name(kind_label, title, until), taken)
+            name = unique_channel_name(composed_room_name(kind_label, title), taken)
             try:
                 new_channel = await member.guild.create_voice_channel(
                     name=name,
@@ -384,7 +381,6 @@ class VcManagerCog(commands.Cog):
             name=name,
             mention=member.mention,
             details=details,
-            until=until,
             kind_label=kind_label,
             occupied=occupied,
             occupancy=occupancy,
