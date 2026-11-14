@@ -43,7 +43,7 @@ class _StartButton(discord.ui.Button):
             if not cog.in_bot_channel(interaction.channel):
                 await send_ephemeral(interaction, t(msg.ERR_02))
                 return
-            await interaction.response.send_modal(UidModal())
+            await cog.begin_card_flow(interaction)
         except discord.HTTPException:
             logger.warning("カード開始の応答に失敗しました")
         except Exception:

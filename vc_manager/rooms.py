@@ -38,6 +38,16 @@ class Room:
     occupied_once: bool = False
     created_at: float = 0.0
     card_message_id: int = 0
+    kind_label: str = ""
+    title: str = ""
+    details: str = ""
+    occupancy: int = 0
+    recruiting: bool = True
+
+    @property
+    def can_edit(self) -> bool:
+        """作成時メタがある部屋だけ後から編集・募集停止できる。"""
+        return bool(self.kind_label)
 
 
 def load_rooms(path: Path = ROOMS_PATH) -> dict[int, Room]:
@@ -65,6 +75,11 @@ def load_rooms(path: Path = ROOMS_PATH) -> dict[int, Room]:
                 occupied_once=bool(item.get("occupied_once", False)),
                 created_at=float(item.get("created_at") or 0.0),
                 card_message_id=int(item.get("card_message_id") or 0),
+                kind_label=str(item.get("kind_label") or ""),
+                title=str(item.get("title") or ""),
+                details=str(item.get("details") or ""),
+                occupancy=int(item.get("occupancy") or 0),
+                recruiting=bool(item["recruiting"]) if "recruiting" in item else True,
             )
         except (KeyError, TypeError, ValueError):
             continue

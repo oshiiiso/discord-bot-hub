@@ -201,18 +201,47 @@ def recruit_embed(
     occupied: int,
     occupancy: int,
     room_mention: str,
+    recruiting: bool = True,
 ) -> discord.Embed:
-    """募集チャンネルに出す埋め込み。参加は部屋のメンションから入る。"""
+    """募集チャンネルに出す埋め込み。停止中は参加リンクを出さない。"""
     blocks = [msg.MSG_EMBED_DESCRIPTION.format(mention=mention)]
     if details:
         blocks.append(details)
+    status = msg.MSG_EMBED_STATUS_OPEN if recruiting else msg.MSG_EMBED_STATUS_CLOSED
     items = [
+        _labeled_block(msg.MSG_EMBED_STATUS, status),
         _labeled_block(msg.MSG_EMBED_KIND, kind_label),
         _labeled_block(msg.MSG_EMBED_CAPACITY, format_capacity(occupied, occupancy)),
-        _labeled_block(msg.MSG_EMBED_ROOM, room_mention),
     ]
+    if recruiting:
+        items.append(_labeled_block(msg.MSG_EMBED_ROOM, room_mention))
     blocks.append("\n\n".join(items))
-    return discord.Embed(title=name, description="\n\n".join(blocks), color=0x5865F2)
+    color = msg.MSG_EMBED_COLOR_OPEN if recruiting else msg.MSG_EMBED_COLOR_CLOSED
+    return discord.Embed(title=name, description="\n\n".join(blocks), color=color)
+
+
+def recruit_embed_for_room(
+    room: object,
+    *,
+    channel_name: str,
+    occupied: int,
+    room_mention: str,
+) -> discord.Embed | None:
+    """保存済みメタから募集埋め込みを組み立てる。編集不可の古い部屋は None。"""
+    from vc_manager.rooms import Room
+
+    if not isinstance(room, Room) or not room.can_edit:
+        return None
+    return recruit_embed(
+        name=channel_name,
+        mention=f"<@{room.owner_id}>",
+        details=room.details,
+        kind_label=room.kind_label,
+        occupied=occupied,
+        occupancy=room.occupancy,
+        room_mention=room_mention,
+        recruiting=room.recruiting,
+    )
 
 
 _OCCUPANCY_IN_DESC = re.compile(

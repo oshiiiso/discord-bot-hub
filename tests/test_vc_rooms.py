@@ -8,10 +8,24 @@ from vc_manager.create_view import (
     format_duration_ja,
     panel_embed,
     recruit_embed,
+    recruit_embed_for_room,
+)
+from vc_manager.edit_view import VcEditButton, VcPauseButton, VcResumeButton, recruit_room_view
+from vc_manager.manage_view import (
+    PAGE_SIZE,
+    VcManageButton,
+    clamp_page,
+    page_count,
+    slice_page,
 )
 from vc_manager.messages import (
+    MSG_EMBED_COLOR_CLOSED,
+    MSG_EMBED_COLOR_OPEN,
     MSG_EMBED_KIND,
     MSG_EMBED_ROOM,
+    MSG_EMBED_STATUS,
+    MSG_EMBED_STATUS_CLOSED,
+    MSG_EMBED_STATUS_OPEN,
     MSG_OCCUPANCY_UNLIMITED,
     MSG_PANEL_FIELD_EXAMPLE,
     MSG_PANEL_FIELD_HOW,
@@ -97,12 +111,16 @@ def test_save_and_load_rooms(tmp_path: Path) -> None:
         recruit_channel_id=4,
         invite_url="https://discord.gg/test",
         owner_id=5,
+        kind_label="原神",
+        title="探索",
+        details="夜まで",
+        occupancy=8,
     )
     save_rooms({1: room}, path=path)
     loaded = load_rooms(path)
     assert loaded[1] == room
-    assert loaded[1].occupied_once is False
-    assert loaded[1].created_at == 0.0
+    assert loaded[1].can_edit is True
+    assert loaded[1].occupancy == 8
 
 
 def test_load_rooms_occupied_once_defaults_false(tmp_path: Path) -> None:
@@ -117,6 +135,124 @@ def test_load_rooms_occupied_once_defaults_false(tmp_path: Path) -> None:
     assert loaded[1].occupied_once is False
     assert loaded[1].created_at == 0.0
     assert loaded[1].card_message_id == 0
+    assert loaded[1].can_edit is False
+    assert loaded[1].kind_label == ""
+    assert loaded[1].occupancy == 0
+
+
+def test_recruit_embed_for_room_and_edit_button() -> None:
+    room = Room(
+        voice_channel_id=2,
+        guild_id=1,
+        message_id=3,
+        recruit_channel_id=4,
+        invite_url="",
+        owner_id=9,
+        kind_label="原神",
+        title="探索",
+        details="初心者歓迎",
+        occupancy=0,
+        recruiting=True,
+    )
+    embed = recruit_embed_for_room(
+        room,
+        channel_name="原神-探索",
+        occupied=2,
+        room_mention="<#2>",
+    )
+    assert embed is not None
+    description = embed.description or ""
+    assert embed.title == "原神-探索"
+    assert embed.color is not None and embed.color.value == MSG_EMBED_COLOR_OPEN
+    assert "<@9>" in description
+    assert "初心者歓迎" in description
+    assert f"**{MSG_EMBED_STATUS}**\n{MSG_EMBED_STATUS_OPEN}" in description
+    assert f"**👥 人数**\n2/{MSG_OCCUPANCY_UNLIMITED}" in description
+    assert f"**{MSG_EMBED_ROOM}**\n<#2>" in description
+
+    room.recruiting = False
+    closed = recruit_embed_for_room(
+        room,
+        channel_name="原神-探索",
+        occupied=2,
+        room_mention="<#2>",
+    )
+    assert closed is not None
+    closed_desc = closed.description or ""
+    assert closed.color is not None and closed.color.value == MSG_EMBED_COLOR_CLOSED
+    assert f"**{MSG_EMBED_STATUS}**\n{MSG_EMBED_STATUS_CLOSED}" in closed_desc
+    assert MSG_EMBED_ROOM not in closed_desc
+    assert "<#2>" not in closed_desc
+
+    legacy = Room(
+        voice_channel_id=2,
+        guild_id=1,
+        message_id=3,
+        recruit_channel_id=4,
+        invite_url="",
+        owner_id=9,
+    )
+    assert recruit_embed_for_room(
+        legacy,
+        channel_name="旧部屋",
+        occupied=1,
+        room_mention="<#2>",
+    ) is None
+
+    open_view = recruit_room_view(2, recruiting=True)
+    assert any(isinstance(item, VcEditButton) and item.channel_id == 2 for item in open_view.children)
+    assert any(isinstance(item, VcManageButton) and item.channel_id == 2 for item in open_view.children)
+    assert any(isinstance(item, VcPauseButton) and item.channel_id == 2 for item in open_view.children)
+    assert not any(isinstance(item, VcResumeButton) for item in open_view.children)
+
+    closed_view = recruit_room_view(2, recruiting=False)
+    assert any(isinstance(item, VcManageButton) and item.channel_id == 2 for item in closed_view.children)
+    assert any(isinstance(item, VcResumeButton) and item.channel_id == 2 for item in closed_view.children)
+    assert not any(isinstance(item, VcPauseButton) for item in closed_view.children)
+
+
+def test_manage_page_helpers() -> None:
+    assert page_count(0) == 1
+    assert page_count(25) == 1
+    assert page_count(26) == 2
+    assert page_count(50) == 2
+    assert page_count(51) == 3
+    assert clamp_page(-1, 60) == 0
+    assert clamp_page(99, 60) == 2
+    items = list(range(30))
+    assert slice_page(items, 0) == list(range(PAGE_SIZE))
+    assert slice_page(items, 1) == list(range(25, 30))
+    assert slice_page(items, 9) == list(range(25, 30))
+
+
+def test_can_manage_members_owner_or_mover() -> None:
+    from types import SimpleNamespace
+
+    from vc_manager.manage_view import can_manage_members
+
+    room = Room(
+        voice_channel_id=2,
+        guild_id=1,
+        message_id=3,
+        recruit_channel_id=4,
+        invite_url="",
+        owner_id=10,
+        kind_label="原神",
+    )
+
+    class _Channel:
+        def permissions_for(self, member: object) -> object:
+            return getattr(member, "perms")
+
+    channel = _Channel()
+    owner = SimpleNamespace(id=10, perms=SimpleNamespace(administrator=False, move_members=False))
+    mover = SimpleNamespace(id=11, perms=SimpleNamespace(administrator=False, move_members=True))
+    admin = SimpleNamespace(id=12, perms=SimpleNamespace(administrator=True, move_members=False))
+    other = SimpleNamespace(id=13, perms=SimpleNamespace(administrator=False, move_members=False))
+    assert can_manage_members(owner, room, channel)  # type: ignore[arg-type]
+    assert can_manage_members(mover, room, channel)  # type: ignore[arg-type]
+    assert can_manage_members(admin, room, channel)  # type: ignore[arg-type]
+    assert not can_manage_members(other, room, channel)  # type: ignore[arg-type]
 
 
 def test_format_duration_ja() -> None:
@@ -136,6 +272,8 @@ def test_panel_embed_explains_flow() -> None:
     assert "5分" in description
     assert "10秒" in description
     assert "原神-探索" in description
+    assert "編集" in description
+    assert "メンバー操作" in description
     assert embed.fields == []
 
 
@@ -154,10 +292,12 @@ def test_recruit_embed_includes_details_and_join() -> None:
         occupied=1,
         occupancy=15,
         room_mention="<#2>",
+        recruiting=True,
     )
     description = with_details.description or ""
     assert "<@1> が部屋を作りました" in description
     assert "世界ランク60 / 夜まで" in description
+    assert f"**{MSG_EMBED_STATUS}**\n{MSG_EMBED_STATUS_OPEN}" in description
     assert f"**{MSG_EMBED_KIND}**\n原神" in description
     assert "**👥 人数**\n1/15" in description
     assert f"**{MSG_EMBED_ROOM}**\n<#2>" in description
@@ -172,8 +312,12 @@ def test_recruit_embed_includes_details_and_join() -> None:
         occupied=0,
         occupancy=0,
         room_mention="<#2>",
+        recruiting=False,
     )
-    assert f"**👥 人数**\n0/{MSG_OCCUPANCY_UNLIMITED}" in (without.description or "")
+    closed = without.description or ""
+    assert f"**👥 人数**\n0/{MSG_OCCUPANCY_UNLIMITED}" in closed
+    assert f"**{MSG_EMBED_STATUS}**\n{MSG_EMBED_STATUS_CLOSED}" in closed
+    assert MSG_EMBED_ROOM not in closed
 
 
 def test_apply_occupied_count_updates_description() -> None:

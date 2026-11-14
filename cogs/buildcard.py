@@ -22,6 +22,7 @@ from games.genshin.catalog import (
 )
 from logging_config import get_logger
 from replies import defer_ephemeral, edit_original, send_ephemeral
+from services.card_history import CardHistoryStore, HistoryEntry
 from services.card_renderer import render_build_card
 from services.channels import is_bot_channel
 from services.character_check import collect_rows, format_report, note_rows, problem_rows
@@ -31,7 +32,8 @@ from services.copy import t
 from services.enka_client import EnkaAvatar, EnkaClient, EnkaError, EnkaShowcase
 from services.session_store import SessionStore, UidSession
 from ui.guide_embed import formula_embed, guide_embed, is_guide_message
-from ui.start_view import StartCardView
+from ui.history_view import HistoryStartView
+from ui.start_view import StartCardView, UidModal
 from ui.uid_view import UidPickView
 
 logger = get_logger(__name__)
@@ -45,6 +47,7 @@ class BuildCog(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
         self.sessions = SessionStore()
+        self.history = CardHistoryStore()
         self.enka = EnkaClient()
         self._preview_all_lock = asyncio.Lock()
 
@@ -440,17 +443,44 @@ class BuildCog(commands.Cog):
     async def uid_cmd(self, interaction: discord.Interaction, uid: str) -> None:
         await self.begin_uid(interaction, uid)
 
-    async def begin_uid(self, interaction: discord.Interaction, uid: str) -> None:
-        """スラッシュと Modal の共通開始。選択は ephemeral、カードだけチャンネルへ。"""
+    async def begin_card_flow(self, interaction: discord.Interaction) -> None:
+        """開始ボタン。履歴があれば選択、なければ UID 入力。"""
+        entries = self.history.list_for(interaction.user.id)
+        if not entries:
+            await interaction.response.send_modal(UidModal())
+            return
+        await interaction.response.send_message(
+            t(msg.MSG_89),
+            view=HistoryStartView(self, interaction.user.id, entries),
+            ephemeral=True,
+        )
+
+    async def begin_uid(
+        self,
+        interaction: discord.Interaction,
+        uid: str,
+        *,
+        replace_message: bool = False,
+    ) -> None:
+        """スラッシュと Modal・履歴からの共通開始。選択は ephemeral、カードだけチャンネルへ。"""
         if not await self._require_channel(interaction):
             return
         digits = "".join(c for c in uid if c.isdigit())
         if not 8 <= len(digits) <= 10:
             await send_ephemeral(interaction, t(msg.ERR_15))
             return
-        await send_ephemeral(interaction, t(msg.MSG_30), persist=True)
-        if not interaction.response.is_done():
-            return
+        if interaction.response.is_done():
+            await edit_original(interaction, content=t(msg.MSG_30), view=None, persist=True)
+        elif replace_message:
+            try:
+                await interaction.response.edit_message(content=t(msg.MSG_30), view=None)
+            except discord.HTTPException:
+                logger.warning("UID 紹介オープンの開始表示に失敗しました")
+                return
+        else:
+            await send_ephemeral(interaction, t(msg.MSG_30), persist=True)
+            if not interaction.response.is_done():
+                return
         try:
             showcase = await self.enka.fetch_showcase(digits)
         except EnkaError as e:
@@ -590,12 +620,115 @@ class BuildCog(commands.Cog):
             logger.warning("カードの投稿に失敗しました channel=%s", channel.id)
             await edit_original(interaction, content=t(msg.ERR_13), view=None)
             return
+        self._remember_history(session.user_id, session, avatar)
         session.reset_pick()
         await edit_original(
             interaction,
             content=t(msg.MSG_34, character=avatar.name_ja),
             view=self._swap_pick_view(session_key, view),
         )
+
+    def _remember_history(self, user_id: int, session: UidSession, avatar: EnkaAvatar) -> None:
+        build = None
+        if session.build_id:
+            build = next((b for b in avatar.character.builds if b.id == session.build_id), None)
+        if build is None and avatar.character.builds:
+            build = avatar.character.builds[0]
+        self.history.remember(
+            user_id,
+            uid=session.uid,
+            nickname=session.nickname,
+            avatar_id=avatar.avatar_id,
+            skill_depot_id=avatar.skill_depot_id,
+            character_name_ja=avatar.name_ja,
+            build_id=build.id if build else None,
+            build_name_ja=build.name_ja if build else "",
+        )
+
+    @staticmethod
+    def _find_history_avatar(
+        avatars: list[EnkaAvatar],
+        entry: HistoryEntry,
+    ) -> tuple[int, EnkaAvatar] | None:
+        exact = [
+            (i, avatar)
+            for i, avatar in enumerate(avatars)
+            if avatar.avatar_id == entry.avatar_id and avatar.skill_depot_id == entry.skill_depot_id
+        ]
+        if exact:
+            return exact[0]
+        loose = [
+            (i, avatar)
+            for i, avatar in enumerate(avatars)
+            if avatar.avatar_id == entry.avatar_id
+        ]
+        if loose:
+            return loose[0]
+        return None
+
+    async def publish_from_history(
+        self,
+        interaction: discord.Interaction,
+        entry: HistoryEntry,
+    ) -> None:
+        """履歴から Enka を取り直して即出す。紹介に無ければ選択へフォールバック。"""
+        if not await self._require_channel(interaction):
+            return
+        try:
+            await interaction.response.edit_message(content=t(msg.MSG_30), view=None)
+        except discord.HTTPException:
+            logger.warning("履歴からの即出し開始に失敗しました")
+            return
+        try:
+            showcase = await self.enka.fetch_showcase(entry.uid)
+        except EnkaError as e:
+            await edit_original(
+                interaction,
+                content=t(msg.ERR_ENKA.get(e.code, msg.ERR_12)),
+                persist=True,
+            )
+            return
+        except Exception:
+            logger.exception("履歴 UID の取得に失敗しました")
+            await edit_original(interaction, content=t(msg.ERR_12), persist=True)
+            return
+        if not showcase.avatars:
+            await edit_original(interaction, content=t(msg.ERR_10), persist=True)
+            return
+
+        try:
+            message = await interaction.original_response()
+        except discord.HTTPException:
+            logger.warning("履歴開始メッセージの取得に失敗しました")
+            return
+        session = UidSession(
+            user_id=interaction.user.id,
+            uid=showcase.uid,
+            nickname=showcase.nickname,
+            avatars=list(showcase.avatars),
+        )
+        self.sessions.put(message.id, session)
+
+        found = self._find_history_avatar(session.avatars, entry)
+        if found is None:
+            await edit_original(
+                interaction,
+                content=t(msg.MSG_94),
+                view=UidPickView(self, message.id),
+                persist=True,
+            )
+            return
+
+        index, avatar = found
+        session.selected_index = index
+        build_ids = {b.id for b in avatar.character.builds}
+        if entry.build_id and entry.build_id in build_ids:
+            session.build_id = entry.build_id
+        elif avatar.character.builds:
+            session.build_id = avatar.character.builds[0].id
+        else:
+            session.build_id = None
+        await self._finish_public_card(interaction, session, session_key=message.id)
 
     async def publish_card(self, interaction: discord.Interaction, view: UidPickView) -> None:
         """選択完了後、チャンネルへカードだけ出す。"""

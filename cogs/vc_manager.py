@@ -29,8 +29,17 @@ from vc_manager.create_view import (
     is_panel_message,
     panel_embed,
     recruit_embed,
+    recruit_embed_for_room,
 )
+from vc_manager.edit_view import VcEditButton, VcPauseButton, VcResumeButton, recruit_room_view
 from vc_manager.join_view import VcJoinButton
+from vc_manager.manage_view import (
+    MemberPickView,
+    VcManageButton,
+    bot_can_move,
+    can_manage_members,
+    list_operable_members,
+)
 from vc_manager.rooms import (
     Room,
     composed_room_name,
@@ -73,17 +82,261 @@ class VcManagerCog(commands.Cog):
     async def cog_load(self) -> None:
         self.bot.add_dynamic_items(VcJoinButton)
         self.bot.add_dynamic_items(VcCreateButton)
+        self.bot.add_dynamic_items(VcEditButton)
+        self.bot.add_dynamic_items(VcManageButton)
+        self.bot.add_dynamic_items(VcPauseButton)
+        self.bot.add_dynamic_items(VcResumeButton)
         self._rooms = load_rooms()
 
     async def cog_unload(self) -> None:
         self.bot.remove_dynamic_items(VcJoinButton)
         self.bot.remove_dynamic_items(VcCreateButton)
+        self.bot.remove_dynamic_items(VcEditButton)
+        self.bot.remove_dynamic_items(VcManageButton)
+        self.bot.remove_dynamic_items(VcPauseButton)
+        self.bot.remove_dynamic_items(VcResumeButton)
         for task in list(self._grace_tasks.values()):
             task.cancel()
         self._grace_tasks.clear()
         for task in list(self._embed_tasks.values()):
             task.cancel()
         self._embed_tasks.clear()
+
+    def get_room(self, channel_id: int) -> Room | None:
+        """管理中の部屋。無ければ None。"""
+        return self._rooms.get(channel_id)
+
+    async def resolve_voice_channel(self, channel_id: int) -> discord.VoiceChannel | None:
+        """公開用。管理 UI から VC を解決する。"""
+        return await self._resolve_voice_channel(channel_id)
+
+    async def open_member_manage(self, interaction: discord.Interaction, channel_id: int) -> None:
+        """募集埋め込みからメンバー操作 UI を開く。"""
+        room = self._rooms.get(channel_id)
+        if room is None:
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE)
+            return
+        channel = await self._resolve_voice_channel(channel_id)
+        if channel is None:
+            await self._delete_room(channel_id, reason="メンバー操作時に VC が無かった")
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE)
+            return
+        actor = channel.guild.get_member(interaction.user.id)
+        if actor is None:
+            await send_ephemeral(interaction, msg.MSG_MANAGE_FORBIDDEN)
+            return
+        if not can_manage_members(actor, room, channel):
+            await send_ephemeral(interaction, msg.MSG_MANAGE_FORBIDDEN)
+            return
+        me = channel.guild.me
+        if not bot_can_move(channel, me):
+            await send_ephemeral(interaction, msg.MSG_MANAGE_BOT_CANT, persist=True)
+            return
+        members = list_operable_members(channel, actor.id)
+        view = MemberPickView(
+            self,
+            channel_id=channel_id,
+            actor_id=actor.id,
+            members=members,
+        )
+        await send_ephemeral(interaction, view.content(), view=view, persist=True)
+
+    async def refresh_member_pick(
+        self,
+        interaction: discord.Interaction,
+        *,
+        channel_id: int,
+        actor_id: int,
+        page: int,
+    ) -> None:
+        """メンバー一覧を最新の在室状況で描き直す。"""
+        if interaction.user.id != actor_id:
+            await send_ephemeral(interaction, msg.MSG_MANAGE_FORBIDDEN)
+            return
+        room = self._rooms.get(channel_id)
+        if room is None:
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE)
+            return
+        channel = await self._resolve_voice_channel(channel_id)
+        if channel is None:
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE)
+            return
+        members = list_operable_members(channel, actor_id)
+        view = MemberPickView(
+            self,
+            channel_id=channel_id,
+            actor_id=actor_id,
+            members=members,
+            page=page,
+        )
+        try:
+            await interaction.response.edit_message(content=view.content(), view=view)
+        except discord.HTTPException:
+            logger.warning("メンバー一覧の再表示に失敗しました channel_id=%s", channel_id)
+
+    async def manage_eject_member(
+        self,
+        interaction: discord.Interaction,
+        *,
+        channel_id: int,
+        user_id: int,
+    ) -> None:
+        """対象を AFK へ移す。無ければ切断する。"""
+        if not await self._defer_manage_action(interaction):
+            return
+        allowed, channel, target, err = await self._prepare_member_action(
+            interaction,
+            channel_id=channel_id,
+            user_id=user_id,
+        )
+        if not allowed or channel is None or target is None:
+            await self._finish_manage_action(interaction, err or msg.MSG_MANAGE_FAILED)
+            return
+        me = channel.guild.me
+        if not bot_can_move(channel, me):
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_BOT_CANT)
+            return
+        name = target.display_name or target.name or str(target.id)
+        afk = channel.guild.afk_channel
+        try:
+            if (
+                isinstance(afk, discord.VoiceChannel)
+                and afk.id != channel.id
+                and bot_can_move(afk, me)
+            ):
+                await target.move_to(afk, reason=f"{BOT_DISPLAY_NAME} のメンバー退出")
+            else:
+                await target.move_to(None, reason=f"{BOT_DISPLAY_NAME} のメンバー退出")
+        except discord.Forbidden:
+            logger.warning(
+                "メンバー退出が拒否されました channel_id=%s user_id=%s",
+                channel_id,
+                user_id,
+            )
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_KICK_FAILED)
+            return
+        except discord.HTTPException:
+            logger.exception(
+                "メンバー退出に失敗しました channel_id=%s user_id=%s",
+                channel_id,
+                user_id,
+            )
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_KICK_FAILED)
+            return
+        await self._finish_manage_action(
+            interaction,
+            msg.MSG_MANAGE_KICK_DONE.format(name=name),
+        )
+
+    async def manage_move_member(
+        self,
+        interaction: discord.Interaction,
+        *,
+        channel_id: int,
+        user_id: int,
+        dest_id: int,
+    ) -> None:
+        """対象を指定 VoiceChannel へ移す。"""
+        if not await self._defer_manage_action(interaction):
+            return
+        allowed, channel, target, err = await self._prepare_member_action(
+            interaction,
+            channel_id=channel_id,
+            user_id=user_id,
+        )
+        if not allowed or channel is None or target is None:
+            await self._finish_manage_action(interaction, err or msg.MSG_MANAGE_FAILED)
+            return
+        if dest_id == channel.id:
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_MOVE_FAILED)
+            return
+        dest = channel.guild.get_channel(dest_id)
+        if not isinstance(dest, discord.VoiceChannel):
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_NO_DEST)
+            return
+        me = channel.guild.me
+        if not bot_can_move(channel, me) or not bot_can_move(dest, me):
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_BOT_CANT)
+            return
+        name = target.display_name or target.name or str(target.id)
+        if target.voice is not None and target.voice.channel is not None:
+            if target.voice.channel.id == dest.id:
+                await self._finish_manage_action(
+                    interaction,
+                    msg.MSG_MANAGE_MOVE_DONE.format(name=name),
+                )
+                return
+        try:
+            await target.move_to(dest, reason=f"{BOT_DISPLAY_NAME} のメンバー移動")
+        except discord.Forbidden:
+            logger.warning(
+                "メンバー移動が拒否されました channel_id=%s user_id=%s dest_id=%s",
+                channel_id,
+                user_id,
+                dest_id,
+            )
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_MOVE_FAILED)
+            return
+        except discord.HTTPException:
+            logger.exception(
+                "メンバー移動に失敗しました channel_id=%s user_id=%s dest_id=%s",
+                channel_id,
+                user_id,
+                dest_id,
+            )
+            await self._finish_manage_action(interaction, msg.MSG_MANAGE_MOVE_FAILED)
+            return
+        await self._finish_manage_action(
+            interaction,
+            msg.MSG_MANAGE_MOVE_DONE.format(name=name),
+        )
+
+    async def _defer_manage_action(self, interaction: discord.Interaction) -> bool:
+        """メンバー操作の実行前に同じ ephemeral を応答済みにする。"""
+        if interaction.response.is_done():
+            return True
+        try:
+            await interaction.response.defer()
+            return True
+        except discord.HTTPException:
+            logger.warning("メンバー操作の応答予約に失敗しました")
+            return False
+
+    async def _finish_manage_action(self, interaction: discord.Interaction, content: str) -> None:
+        """操作結果で UI を閉じる。"""
+        try:
+            await interaction.edit_original_response(content=content, view=None)
+        except discord.HTTPException:
+            logger.warning("メンバー操作の結果表示に失敗しました")
+            await send_ephemeral(interaction, content, persist=True)
+
+    async def _prepare_member_action(
+        self,
+        interaction: discord.Interaction,
+        *,
+        channel_id: int,
+        user_id: int,
+    ) -> tuple[bool, discord.VoiceChannel | None, discord.Member | None, str | None]:
+        """権限と在室を確認する。失敗時はメッセージ文言を返す。"""
+        room = self._rooms.get(channel_id)
+        if room is None:
+            return False, None, None, msg.MSG_ROOM_GONE
+        channel = await self._resolve_voice_channel(channel_id)
+        if channel is None:
+            await self._delete_room(channel_id, reason="メンバー操作実行時に VC が無かった")
+            return False, None, None, msg.MSG_ROOM_GONE
+        actor = channel.guild.get_member(interaction.user.id)
+        if actor is None or not can_manage_members(actor, room, channel):
+            return False, None, None, msg.MSG_MANAGE_FORBIDDEN
+        if user_id == actor.id:
+            return False, None, None, msg.MSG_MANAGE_TARGET_GONE
+        target = channel.guild.get_member(user_id)
+        if target is None or target.bot:
+            return False, None, None, msg.MSG_MANAGE_TARGET_GONE
+        voice = target.voice
+        if voice is None or voice.channel is None or voice.channel.id != channel.id:
+            return False, None, None, msg.MSG_MANAGE_TARGET_GONE
+        return True, channel, target, None
 
     @vc.command(name="ping", description=msg.MSG_CMD_PING)
     async def ping(self, interaction: discord.Interaction) -> None:
@@ -330,6 +583,112 @@ class VcManagerCog(commands.Cog):
         if result.channel_id:
             self._remember_owner_prompt(result.channel_id, interaction)
 
+    async def complete_edit_room(
+        self,
+        interaction: discord.Interaction,
+        *,
+        channel_id: int,
+        title: str,
+        details: str,
+        occupancy: int,
+    ) -> None:
+        """募集の部屋名・詳細・人数を更新する。"""
+        if not await defer_ephemeral(interaction):
+            return
+        room = self._rooms.get(channel_id)
+        if room is None:
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE, persist=True)
+            return
+        if interaction.user.id != room.owner_id:
+            await send_ephemeral(interaction, msg.MSG_EDIT_FORBIDDEN, persist=True)
+            return
+        if not room.can_edit:
+            await send_ephemeral(interaction, msg.MSG_EDIT_UNSUPPORTED, persist=True)
+            return
+
+        channel = await self._resolve_voice_channel(channel_id)
+        if channel is None:
+            await self._delete_room(channel_id, reason="編集時に VC が無かった")
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE, persist=True)
+            return
+
+        category = channel.category
+        taken = {c.name for c in category.channels} if category is not None else set()
+        taken.update(self._active_names.values())
+        taken.discard(channel.name)
+        new_name = unique_channel_name(composed_room_name(room.kind_label, title), taken)
+
+        self._cancel_recruit_count(channel_id)
+        try:
+            edits: dict[str, object] = {"user_limit": occupancy}
+            if new_name != channel.name:
+                edits["name"] = new_name
+            updated = await channel.edit(**edits, reason=f"{BOT_DISPLAY_NAME} の募集編集")
+        except discord.HTTPException:
+            logger.exception("部屋 VC の編集に失敗しました channel_id=%s", channel_id)
+            await send_ephemeral(interaction, msg.MSG_EDIT_FAILED, persist=True)
+            return
+
+        room.title = title
+        room.details = details
+        room.occupancy = occupancy
+        display_name = updated.name if isinstance(updated, discord.VoiceChannel) else new_name
+        self._active_names[channel_id] = display_name
+        async with self._lock:
+            save_rooms(self._rooms)
+
+        voice = updated if isinstance(updated, discord.VoiceChannel) else channel
+        if not await self._rewrite_recruit_embed(room, display_name, voice):
+            logger.warning("編集後の募集埋め込み更新に失敗したので再試行を予約 channel_id=%s", channel_id)
+            self._schedule_recruit_count(channel_id)
+        await send_ephemeral(interaction, msg.MSG_EDIT_DONE)
+
+    async def complete_set_recruiting(
+        self,
+        interaction: discord.Interaction,
+        *,
+        channel_id: int,
+        recruiting: bool,
+    ) -> None:
+        """募集の停止／再開。埋め込みは残し、参加リンクの有無だけ変える。"""
+        if not await defer_ephemeral(interaction):
+            return
+        room = self._rooms.get(channel_id)
+        if room is None:
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE, persist=True)
+            return
+        if interaction.user.id != room.owner_id:
+            await send_ephemeral(interaction, msg.MSG_EDIT_FORBIDDEN, persist=True)
+            return
+        if not room.can_edit:
+            await send_ephemeral(interaction, msg.MSG_EDIT_UNSUPPORTED, persist=True)
+            return
+
+        channel = await self._resolve_voice_channel(channel_id)
+        if channel is None:
+            await self._delete_room(channel_id, reason="募集切替時に VC が無かった")
+            await send_ephemeral(interaction, msg.MSG_ROOM_GONE, persist=True)
+            return
+
+        if room.recruiting == recruiting:
+            await self._rewrite_recruit_embed(room, channel.name, channel)
+            done = msg.MSG_RESUME_DONE if recruiting else msg.MSG_PAUSE_DONE
+            await send_ephemeral(interaction, done)
+            return
+
+        room.recruiting = recruiting
+        async with self._lock:
+            save_rooms(self._rooms)
+        self._cancel_recruit_count(channel_id)
+        if not await self._rewrite_recruit_embed(room, channel.name, channel):
+            logger.warning(
+                "募集状態の埋め込み更新に失敗したので再試行を予約 channel_id=%s",
+                channel_id,
+            )
+            self._schedule_recruit_count(channel_id)
+        done = msg.MSG_RESUME_DONE if recruiting else msg.MSG_PAUSE_DONE
+        await send_ephemeral(interaction, done)
+
     async def _build_room(
         self,
         member: discord.Member,
@@ -385,9 +744,13 @@ class VcManagerCog(commands.Cog):
             occupied=occupied,
             occupancy=occupancy,
             room_mention=new_channel.mention,
+            recruiting=True,
         )
         try:
-            posted = await recruit.send(embed=embed)
+            posted = await recruit.send(
+                embed=embed,
+                view=recruit_room_view(new_channel.id, recruiting=True),
+            )
         except discord.HTTPException:
             logger.exception("募集埋め込みの投稿に失敗しました channel_id=%s", new_channel.id)
             await self._abandon_channel(new_channel, "募集埋め込みを出せなかった部屋")
@@ -402,6 +765,11 @@ class VcManagerCog(commands.Cog):
             owner_id=member.id,
             occupied_once=moved or _human_count(new_channel) > 0,
             created_at=time.time(),
+            kind_label=kind_label,
+            title=title,
+            details=details,
+            occupancy=occupancy,
+            recruiting=True,
         )
         async with self._lock:
             self._rooms[new_channel.id] = room
@@ -520,6 +888,9 @@ class VcManagerCog(commands.Cog):
             channel = await self._resolve_voice_channel(channel_id)
             if channel is None:
                 return
+            if room.can_edit:
+                await self._rewrite_recruit_embed(room, channel.name, channel)
+                return
             recruit = await self._resolve_text_channel(room.recruit_channel_id)
             if recruit is None:
                 return
@@ -536,7 +907,10 @@ class VcManagerCog(commands.Cog):
             if not apply_occupied_count(embed, _human_count(channel)):
                 return
             try:
-                await message.edit(embed=embed)
+                await message.edit(
+                    embed=embed,
+                    view=recruit_room_view(channel_id, recruiting=room.recruiting),
+                )
             except discord.HTTPException:
                 logger.exception("募集人数の更新に失敗しました message_id=%s", room.message_id)
         except asyncio.CancelledError:
@@ -546,6 +920,41 @@ class VcManagerCog(commands.Cog):
         finally:
             if self._embed_tasks.get(channel_id) is asyncio.current_task():
                 self._embed_tasks.pop(channel_id, None)
+
+    async def _rewrite_recruit_embed(
+        self,
+        room: Room,
+        channel_name: str,
+        channel: discord.VoiceChannel,
+    ) -> bool:
+        """保存メタから募集埋め込みを書き直す。"""
+        embed = recruit_embed_for_room(
+            room,
+            channel_name=channel_name,
+            occupied=_human_count(channel),
+            room_mention=channel.mention,
+        )
+        if embed is None:
+            return False
+        recruit = await self._resolve_text_channel(room.recruit_channel_id)
+        if recruit is None:
+            return False
+        try:
+            message = await recruit.fetch_message(room.message_id)
+        except discord.NotFound:
+            return False
+        except discord.HTTPException:
+            logger.exception("募集埋め込みの取得に失敗しました message_id=%s", room.message_id)
+            return False
+        try:
+            await message.edit(
+                embed=embed,
+                view=recruit_room_view(room.voice_channel_id, recruiting=room.recruiting),
+            )
+        except discord.HTTPException:
+            logger.exception("募集埋め込みの更新に失敗しました message_id=%s", room.message_id)
+            return False
+        return True
 
     async def _delayed_delete(self, channel_id: int, delay: float) -> None:
         try:

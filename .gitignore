@@ -37,6 +37,7 @@ storage/learned_characters.json
 storage/preview*.png
 storage/preview_assets/
 storage/vc_rooms.json
+storage/buildcard_history.json
 storage/*.tmp
 
 # OS
